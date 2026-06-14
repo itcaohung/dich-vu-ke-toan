@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kế Toán Anpha - Dịch Vụ Kế Toán Trọn Gói Uy Tín</title>
+  <meta name="description" content="Kế Toán Anpha cung cấp dịch vụ kế toán thuế, thành lập doanh nghiệp, thay đổi giấy phép kinh doanh uy tín, chuyên nghiệp tại TP.HCM, Hà Nội, Đà Nẵng." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #0e5bb5;
+      --blue-dark:  #0a4490;
+      --blue-light: #1a73e8;
+      --orange:     #f47b20;
+      --orange-dark:#d96a10;
+      --gray-bg:    #f5f7fa;
+      --gray-border:#e2e8f0;
+      --text:       #1a202c;
+      --text-muted: #64748b;
+      --white:      #ffffff;
+      --radius:     8px;
+      --shadow:     0 2px 12px rgba(0,0,0,.08);
+      --shadow-lg:  0 8px 32px rgba(0,0,0,.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Be Vietnam Pro', sans-serif; color: var(--text); background: #fff; font-size: 15px; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--blue-dark);
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 0;
+    }
+    .topbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+    .topbar a { color: #cfe2ff; transition: color .2s; }
+    .topbar a:hover { color: #fff; }
+    .topbar-left, .topbar-right { display: flex; align-items: center; gap: 18px; }
+    .topbar i { margin-right: 5px; }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 52px; height: 52px;
+      background: var(--blue);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; color: #fff; font-weight: 800;
+    }
+    .logo-text strong { display: block; font-size: 22px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+    .logo-text span { font-size: 12px; color: var(--text-muted); letter-spacing: .5px; }
+
+    .header-cta { display: flex; align-items: center; gap: 14px; }
+    .btn-hotline {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--orange); color: #fff;
+      padding: 10px 20px; border-radius: 50px;
+      font-weight: 700; font-size: 15px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-hotline:hover { background: var(--orange-dark); transform: translateY(-1px); }
+    .btn-hotline i { font-size: 18px; animation: ring .8s ease infinite alternate; }
+    @keyframes ring { from { transform: rotate(-15deg); } to { transform: rotate(15deg); } }
+
+    /* ── NAV ── */
+    .main-nav { background: var(--blue); }
+    .nav-list { display: flex; align-items: stretch; }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: flex; align-items: center; gap: 5px;
+      padding: 14px 18px;
+      color: #fff; font-size: 14px; font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .nav-link:hover, .nav-item:hover > .nav-link { background: rgba(255,255,255,.15); }
+    .nav-link i.fa-chevron-down { font-size: 10px; transition: transform .2s; }
+    .nav-item:hover .fa-chevron-down { transform: rotate(180deg); }
+
+    /* dropdown */
+    .dropdown {
+      position: absolute; top: 100%; left: 0;
+      min-width: 260px;
+      background: #fff;
+      border-top: 3px solid var(--orange);
+      box-shadow: var(--shadow-lg);
+      border-radius: 0 0 var(--radius) var(--radius);
+      opacity: 0; visibility: hidden; transform: translateY(6px);
+      transition: all .2s;
+      z-index: 999;
+    }
+    .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px; font-size: 14px; color: var(--text);
+      border-bottom: 1px solid var(--gray-border);
+      transition: background .15s, color .15s;
+    }
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { background: #f0f6ff; color: var(--blue); }
+    .dropdown a i { color: var(--blue); width: 16px; }
+
+    /* mobile toggle */
+    .nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; padding: 8px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0a3d7a 0%, #1a73e8 60%, #0e5bb5 100%);
+      padding: 60px 0 50px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.15); backdrop-filter: blur(8px);
+      color: #fff; font-size: 13px; font-weight: 600;
+      padding: 6px 14px; border-radius: 50px; margin-bottom: 18px;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+    .hero h1 { font-size: 36px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+    .hero h1 span { color: #ffd166; }
+    .hero p { color: rgba(255,255,255,.88); font-size: 16px; margin-bottom: 28px; max-width: 480px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: #fff;
+      padding: 13px 28px; border-radius: 50px;
+      font-weight: 700; font-size: 15px;
+      transition: all .2s; box-shadow: 0 4px 16px rgba(244,123,32,.4);
+    }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(244,123,32,.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,.15); color: #fff;
+      padding: 13px 28px; border-radius: 50px;
+      font-weight: 700; font-size: 15px;
+      border: 2px solid rgba(255,255,255,.5);
+      backdrop-filter: blur(8px);
+      transition: all .2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.25); border-color: #fff; }
+
+    .hero-stats { display: flex; gap: 28px; margin-top: 32px; }
+    .stat { text-align: center; }
+    .stat strong { display: block; font-size: 28px; font-weight: 800; color: #ffd166; }
+    .stat span { font-size: 12px; color: rgba(255,255,255,.75); }
+
+    .hero-cards { display: flex; flex-direction: column; gap: 14px; }
+    .hero-card {
+      background: rgba(255,255,255,.12); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 12px; padding: 18px 22px;
+      display: flex; align-items: center; gap: 16px;
+      transition: background .2s;
+    }
+    .hero-card:hover { background: rgba(255,255,255,.2); }
+    .hero-card-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(255,255,255,.15); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: #ffd166;
+    }
+    .hero-card h3 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .hero-card p { font-size: 12px; color: rgba(255,255,255,.75); }
+    .hero-card .price { font-size: 16px; font-weight: 800; color: #ffd166; }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── SECTION TITLES ── */
+    .section { padding: 60px 0; }
+    .section-alt { background: var(--gray-bg); }
+    .section-header { text-align: center; margin-bottom: 40px; }
+    .section-badge {
+      display: inline-block; background: #e8f0fe; color: var(--blue);
+      font-size: 12px; font-weight: 700; padding: 4px 14px;
+      border-radius: 50px; margin-bottom: 10px; letter-spacing: .5px; text-transform: uppercase;
+    }
+    .section-header h2 { font-size: 30px; font-weight: 800; margin-bottom: 10px; }
+    .section-header h2 span { color: var(--blue); }
+    .section-header p { color: var(--text-muted); max-width: 580px; margin: 0 auto; }
+    .divider { width: 60px; height: 4px; background: var(--orange); border-radius: 2px; margin: 12px auto 0; }
+
+    /* ── SERVICES ── */
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .service-card {
+      background: #fff; border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      border: 1px solid var(--gray-border);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .service-card-img {
+      height: 180px; overflow: hidden; position: relative;
+      background: linear-gradient(135deg, #e8f0fe, #c7d9fb);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-card-img i { font-size: 64px; color: var(--blue); opacity: .6; }
+    .service-card-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--orange); color: #fff;
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 50px;
+    }
+    .service-card-body { padding: 20px; }
+    .service-card-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .service-card-body p { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.6; }
+    .service-price { display: flex; align-items: center; justify-content: space-between; }
+    .price-label { font-size: 13px; color: var(--text-muted); }
+    .price-value { font-size: 17px; font-weight: 800; color: var(--orange); }
+    .btn-card {
+      display: block; text-align: center;
+      background: var(--blue); color: #fff;
+      padding: 10px; border-radius: var(--radius);
+      font-weight: 600; font-size: 13px; margin-top: 14px;
+      transition: background .2s;
+    }
+    .btn-card:hover { background: var(--blue-dark); }
+
+    /* ── WHY US ── */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-card {
+      background: #fff; border-radius: 14px; padding: 28px 24px;
+      box-shadow: var(--shadow); border: 1px solid var(--gray-border);
+      text-align: center; transition: transform .25s, box-shadow .25s;
+    }
+    .why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .why-icon {
+      width: 70px; height: 70px;
+      background: linear-gradient(135deg, #e8f0fe, #c7d9fb);
+      border-radius: 50%; margin: 0 auto 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px; color: var(--blue);
+    }
+    .why-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .why-card p { font-size: 14px; color: var(--text-muted); }
+
+    /* ── PROCESS ── */
+    .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+    .process-steps::before {
+      content: ''; position: absolute;
+      top: 36px; left: 10%; right: 10%;
+      height: 2px; background: linear-gradient(90deg, var(--blue), var(--blue-light));
+      z-index: 0;
+    }
+    .process-step { text-align: center; position: relative; z-index: 1; padding: 0 8px; }
+    .step-num {
+      width: 72px; height: 72px;
+      background: var(--blue); color: #fff;
+      border-radius: 50%; margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 800;
+      box-shadow: 0 4px 16px rgba(14,91,181,.35);
+      border: 4px solid #fff;
+    }
+    .process-step h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .process-step p { font-size: 12px; color: var(--text-muted); }
+
+    /* ── ARTICLES ── */
+    .articles-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+    .articles-main { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .article-card {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: var(--shadow); border: 1px solid var(--gray-border);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .article-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .article-img {
+      height: 170px; overflow: hidden;
+      background: linear-gradient(135deg, #e8f0fe, #c7d9fb);
+      display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 48px;
+    }
+    .article-body { padding: 16px; }
+    .article-cat {
+      font-size: 11px; font-weight: 700; color: var(--orange);
+      text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px;
+    }
+    .article-body h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; line-height: 1.5; }
+    .article-body h3 a:hover { color: var(--blue); }
+    .article-meta { font-size: 12px; color: var(--text-muted); display: flex; gap: 12px; align-items: center; }
+    .article-meta i { margin-right: 3px; }
+
+    /* sidebar */
+    .sidebar-box {
+      background: #fff; border-radius: 12px; padding: 20px;
+      box-shadow: var(--shadow); border: 1px solid var(--gray-border); margin-bottom: 22px;
+    }
+    .sidebar-title {
+      font-size: 15px; font-weight: 700;
+      padding-bottom: 12px; margin-bottom: 14px;
+      border-bottom: 2px solid var(--blue);
+      color: var(--blue);
+    }
+    .sidebar-list li { border-bottom: 1px solid var(--gray-border); }
+    .sidebar-list li:last-child { border-bottom: none; }
+    .sidebar-list a {
+      display: flex; align-items: flex-start; gap: 8px;
+      padding: 10px 0; font-size: 13px; color: var(--text);
+      transition: color .15s;
+    }
+    .sidebar-list a:hover { color: var(--blue); }
+    .sidebar-list i { color: var(--blue); margin-top: 3px; flex-shrink: 0; }
+
+    /* contact box */
+    .contact-box {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: #fff; border-radius: 12px; padding: 24px;
+      text-align: center;
+    }
+    .contact-box h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+    .contact-box p { font-size: 13px; opacity: .85; margin-bottom: 16px; }
+    .contact-box .phone { font-size: 24px; font-weight: 800; color: #ffd166; margin-bottom: 14px; display: block; }
+    .contact-box .btn-orange {
+      display: block; background: var(--orange); color: #fff;
+      padding: 11px; border-radius: var(--radius); font-weight: 700; font-size: 14px;
+      transition: background .2s;
+    }
+    .contact-box .btn-orange:hover { background: var(--orange-dark); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .testimonial-card {
+      background: #fff; border-radius: 14px; padding: 26px;
+      box-shadow: var(--shadow); border: 1px solid var(--gray-border);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"'; font-size: 80px; color: #e8f0fe;
+      position: absolute; top: -10px; left: 20px;
+      font-family: serif; line-height: 1;
+    }
+    .testimonial-stars { color: #f59e0b; font-size: 14px; margin-bottom: 12px; }
+    .testimonial-text { font-size: 14px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.7; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 17px;
+    }
+    .author-info strong { display: block; font-size: 14px; font-weight: 700; }
+    .author-info span { font-size: 12px; color: var(--text-muted); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--orange) 0%, #f9a73e 100%);
+      padding: 50px 0; text-align: center;
+    }
+    .cta-banner h2 { font-size: 30px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .cta-banner p { color: rgba(255,255,255,.9); font-size: 16px; margin-bottom: 28px; }
+    .cta-banner .btn-white {
+      background: #fff; color: var(--orange);
+      padding: 14px 36px; border-radius: 50px;
+      font-weight: 800; font-size: 16px;
+      transition: all .2s; display: inline-block;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .cta-banner .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+
+    /* ── FOOTER ── */
+    .footer { background: #0a2647; color: #cfd8e3; padding: 56px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 40px; }
+    .footer-brand .logo-icon { background: rgba(255,255,255,.12); margin-bottom: 14px; }
+    .footer-brand strong { display: block; font-size: 20px; font-weight: 800; color: #fff; }
+    .footer-brand span { font-size: 12px; opacity: .6; }
+    .footer-brand p { font-size: 13px; margin-top: 14px; line-height: 1.7; opacity: .75; }
+    .footer-brand .footer-social { display: flex; gap: 10px; margin-top: 18px; }
+    .footer-brand .footer-social a {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.1); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 15px;
+      transition: background .2s;
+    }
+    .footer-brand .footer-social a:hover { background: var(--blue); }
+
+    .footer-col h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .footer-col ul li { margin-bottom: 9px; }
+    .footer-col a { font-size: 13px; color: #94a3b8; transition: color .15s; display: flex; align-items: center; gap: 6px; }
+    .footer-col a i { font-size: 11px; color: var(--orange); }
+    .footer-col a:hover { color: #fff; }
+
+    .footer-offices { border-top: 1px solid rgba(255,255,255,.08); padding: 30px 0; }
+    .offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .office-item { display: flex; gap: 12px; align-items: flex-start; }
+    .office-icon { color: var(--orange); font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+    .office-info strong { display: block; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .office-info p { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+    .office-info a { font-size: 12px; color: #60a5fa; }
+
+    .footer-bottom {
+      background: #07192e; padding: 16px 0;
+      text-align: center; font-size: 12px; color: #64748b;
+    }
+    .footer-bottom span { color: #94a3b8; }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: repeat(3, 1fr); }
+      .process-steps::before { display: none; }
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-cards { flex-direction: row; flex-wrap: wrap; }
+      .hero-card { flex: 1 1 200px; }
+      .offices-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .topbar-left { display: none; }
+      .hero h1 { font-size: 26px; }
+      .hero-stats { gap: 16px; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .articles-main { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .offices-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .nav-list { display: none; flex-direction: column; }
+      .nav-list.open { display: flex; }
+      .nav-toggle { display: block; }
+      .main-nav .container { display: flex; justify-content: space-between; align-items: center; }
+      .dropdown { position: static; box-shadow: none; border: none; opacity: 1; visibility: visible; transform: none; background: rgba(255,255,255,.06); }
+      .nav-link { padding: 12px 14px; }
+    }
+
+    /* ── FLOATING BUTTONS ── */
+    .float-btns {
+      position: fixed; bottom: 24px; right: 24px;
+      display: flex; flex-direction: column; gap: 12px; z-index: 9999;
+    }
+    .float-btn {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: #fff; box-shadow: var(--shadow-lg);
+      transition: transform .2s; cursor: pointer;
+    }
+    .float-btn:hover { transform: scale(1.12); }
+    .float-zalo { background: #0068ff; }
+    .float-phone { background: var(--orange); animation: pulse 1.5s infinite; }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(244,123,32,.5); }
+      50% { box-shadow: 0 0 0 12px rgba(244,123,32,0); }
+    }
+    .float-top { background: var(--blue); opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .float-top.visible { opacity: 1; pointer-events: all; }
+
+    /* scroll indicator */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      z-index: 9999; transition: width .1s;
+    }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <a href="mailto:cskh@ketoananpha.vn"><i class="fa fa-envelope"></i>cskh@ketoananpha.vn</a>
+      <a href="#"><i class="fa fa-clock"></i>Thứ 2 – Thứ 7: 08:00 – 17:30</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#"><i class="fab fa-facebook"></i>Facebook</a>
+      <a href="#"><i class="fab fa-youtube"></i>YouTube</a>
+      <a href="#"><i class="fab fa-tiktok"></i>TikTok</a>
+      <a href="#"><i class="fab fa-linkedin"></i>LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <div class="logo-icon">A</div>
+        <div class="logo-text">
+          <strong>Kế Toán Anpha</strong>
+          <span>Dịch vụ kế toán uy tín từ 2007</span>
+        </div>
+      </a>
+      <div class="header-cta">
+        <div style="text-align:right; font-size:13px; color:var(--text-muted);">
+          <div style="font-weight:600;">Tư vấn miễn phí 24/7</div>
+          <div style="font-size:12px;">Hơn 100.000 khách hàng tin tưởng</div>
+        </div>
+        <a href="tel:19006234" class="btn-hotline">
+          <i class="fa fa-phone-volume"></i>
+          1900 6234
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav class="main-nav">
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
+    <ul class="nav-list" id="navList">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Giới Thiệu <i class="fa fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#"><i class="fa fa-building"></i>Về Kế Toán Anpha</a>
+          <a href="#"><i class="fa fa-medal"></i>Chứng Chỉ & Giải Thưởng</a>
+          <a href="#"><i class="fa fa-users"></i>Đội Ngũ Chuyên Gia</a>
+          <a href="#"><i class="fa fa-handshake"></i>Đối Tác Chiến Lược</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Thành Lập DN <i class="fa fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#"><i class="fa fa-store"></i>Thành Lập Công Ty TNHH</a>
+          <a href="#"><i class="fa fa-building"></i>Thành Lập Công Ty Cổ Phần</a>
+          <a href="#"><i class="fa fa-user-tie"></i>Thành Lập DN Tư Nhân</a>
+          <a href="#"><i class="fa fa-globe"></i>Thành Lập Công Ty FDI</a>
+          <a href="#"><i class="fa fa-id-card"></i>Đăng Ký Hộ Kinh Doanh</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Dịch Vụ Kế Toán <i class="fa fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#"><i class="fa fa-calculator"></i>Kế Toán Trọn Gói</a>
+          <a href="#"><i class="fa fa-file-invoice-dollar"></i>Dịch Vụ Thuế</a>
+          <a href="#"><i class="fa fa-chart-line"></i>Báo Cáo Tài Chính</a>
+          <a href="#"><i class="fa fa-search"></i>Soát Xét Sổ Sách</a>
+          <a href="#"><i class="fa fa-clipboard-check"></i>Kiểm Toán Nội Bộ</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Thay Đổi GPKD <i class="fa fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#"><i class="fa fa-edit"></i>Thay Đổi Tên Công Ty</a>
+          <a href="#"><i class="fa fa-map-marker-alt"></i>Thay Đổi Địa Chỉ</a>
+          <a href="#"><i class="fa fa-user-edit"></i>Thay Đổi Người Đại Diện</a>
+          <a href="#"><i class="fa fa-dollar-sign"></i>Thay Đổi Vốn Điều Lệ</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Dịch Vụ Khác <i class="fa fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#"><i class="fa fa-file-signature"></i>Chữ Ký Số</a>
+          <a href="#"><i class="fa fa-receipt"></i>Hóa Đơn Điện Tử</a>
+          <a href="#"><i class="fa fa-shield-alt"></i>Bảo Hiểm Xã Hội</a>
+          <a href="#"><i class="fa fa-gavel"></i>Tư Vấn Pháp Lý</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Đào Tạo</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Kiến Thức <i class="fa fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#"><i class="fa fa-newspaper"></i>Tin Tức Mới Nhất</a>
+          <a href="#"><i class="fa fa-book"></i>Kiến Thức Kế Toán</a>
+          <a href="#"><i class="fa fa-balance-scale"></i>Kiến Thức Pháp Luật</a>
+          <a href="#"><i class="fa fa-question-circle"></i>Câu Hỏi Thường Gặp</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Tra Cứu <i class="fa fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#"><i class="fa fa-search"></i>Tra Cứu Mã Số Thuế</a>
+          <a href="#"><i class="fa fa-file-search"></i>Tra Cứu Hóa Đơn</a>
+          <a href="#"><i class="fa fa-landmark"></i>Tra Cứu DN Đăng Ký</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#lienhé" class="nav-link">Liên Hệ</a>
+      </li>
+    </ul>
+    <button class="nav-toggle" onclick="document.getElementById('navList').classList.toggle('open')">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <i class="fa fa-star"></i> #1 Dịch Vụ Kế Toán Uy Tín Tại Việt Nam
+        </div>
+        <h1>Giải Pháp <span>Kế Toán – Thuế</span> Toàn Diện Cho Doanh Nghiệp</h1>
+        <p>Hơn 17 năm kinh nghiệm, phục vụ hơn 100.000 khách hàng trên toàn quốc. Chúng tôi cam kết xử lý chính xác, đúng hạn và bảo mật tuyệt đối.</p>
+        <div class="hero-btns">
+          <a href="tel:19006234" class="btn-primary"><i class="fa fa-phone"></i> Tư Vấn Ngay</a>
+          <a href="#services" class="btn-secondary"><i class="fa fa-list"></i> Xem Dịch Vụ</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>17+</strong><span>Năm Hoạt Động</span></div>
+          <div class="stat"><strong>100K+</strong><span>Khách Hàng</span></div>
+          <div class="stat"><strong>6</strong><span>Chi Nhánh</span></div>
+          <div class="stat"><strong>99%</strong><span>Hài Lòng</span></div>
+        </div>
+      </div>
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hero-card-icon"><i class="fa fa-calculator"></i></div>
+          <div>
+            <h3>Kế Toán Trọn Gói</h3>
+            <p>Báo cáo thuế, sổ sách đầy đủ</p>
+            <div class="price">Từ 500.000đ/tháng</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon"><i class="fa fa-building"></i></div>
+          <div>
+            <h3>Thành Lập Công Ty</h3>
+            <p>Thủ tục nhanh, trọn gói hồ sơ</p>
+            <div class="price">Từ 250.000đ</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon"><i class="fa fa-id-card"></i></div>
+          <div>
+            <h3>Hộ Kinh Doanh Cá Thể</h3>
+            <p>Đăng ký nhanh trong 3–5 ngày</p>
+            <div class="price">1.500.000đ</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon"><i class="fa fa-globe-asia"></i></div>
+          <div>
+            <h3>Công Ty Vốn Ngoại (FDI)</h3>
+            <p>Tư vấn đầu tư nước ngoài</p>
+            <div class="price">Từ 15.000.000đ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Dịch Vụ Của Chúng Tôi</div>
+      <h2>Các <span>Dịch Vụ Nổi Bật</span></h2>
+      <p>Giải pháp kế toán, thuế và thành lập doanh nghiệp toàn diện — chính xác, đúng hạn, giá tốt nhất thị trường</p>
+      <div class="divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-img">
+          <i class="fa fa-calculator"></i>
+          <span class="service-card-badge">Phổ Biến</span>
+        </div>
+        <div class="service-card-body">
+          <h3>Dịch Vụ Kế Toán Trọn Gói</h3>
+          <p>Hạch toán sổ sách, lập báo cáo tài chính, quyết toán thuế hàng tháng/quý/năm đầy đủ, chính xác.</p>
+          <div class="service-price">
+            <span class="price-label">Chi phí từ:</span>
+            <span class="price-value">500.000đ/tháng</span>
+          </div>
+          <a href="#" class="btn-card">Tìm Hiểu Thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#fef3e2,#fde0b0);">
+          <i class="fa fa-building" style="color:#f47b20;"></i>
+        </div>
+        <div class="service-card-body">
+          <h3>Thành Lập Công Ty TNHH</h3>
+          <p>Tư vấn loại hình, soạn thảo hồ sơ, nộp đăng ký kinh doanh, khắc dấu và giao con dấu tận nơi.</p>
+          <div class="service-price">
+            <span class="price-label">Chi phí từ:</span>
+            <span class="price-value">250.000đ</span>
+          </div>
+          <a href="#" class="btn-card">Tìm Hiểu Thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">
+          <i class="fa fa-file-invoice-dollar" style="color:#2e7d32;"></i>
+        </div>
+        <div class="service-card-body">
+          <h3>Khai Báo & Quyết Toán Thuế</h3>
+          <p>Kê khai thuế GTGT, TNDN, TNCN đúng hạn. Hỗ trợ giải trình, kiểm tra thuế tại cơ quan.</p>
+          <div class="service-price">
+            <span class="price-label">Chi phí từ:</span>
+            <span class="price-value">300.000đ/lần</span>
+          </div>
+          <a href="#" class="btn-card">Tìm Hiểu Thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">
+          <i class="fa fa-edit" style="color:#c62828;"></i>
+        </div>
+        <div class="service-card-body">
+          <h3>Thay Đổi Giấy Phép Kinh Doanh</h3>
+          <p>Thay đổi tên, địa chỉ, vốn điều lệ, người đại diện, ngành nghề kinh doanh nhanh chóng.</p>
+          <div class="service-price">
+            <span class="price-label">Chi phí từ:</span>
+            <span class="price-value">500.000đ/lần</span>
+          </div>
+          <a href="#" class="btn-card">Tìm Hiểu Thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#ede7f6,#d1c4e9);">
+          <i class="fa fa-globe" style="color:#4527a0;"></i>
+        </div>
+        <div class="service-card-body">
+          <h3>Thành Lập Công Ty FDI</h3>
+          <p>Tư vấn đầu tư nước ngoài, xin giấy chứng nhận đăng ký đầu tư, thành lập công ty vốn ngoại.</p>
+          <div class="service-price">
+            <span class="price-label">Chi phí từ:</span>
+            <span class="price-value">15.000.000đ</span>
+          </div>
+          <a href="#" class="btn-card">Tìm Hiểu Thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#e0f2f1,#b2dfdb);">
+          <i class="fa fa-shield-alt" style="color:#00695c;"></i>
+        </div>
+        <div class="service-card-body">
+          <h3>Bảo Hiểm Xã Hội & Lao Động</h3>
+          <p>Đăng ký BHXH, BHYT, BHTN cho người lao động. Lập hợp đồng lao động, nội quy công ty.</p>
+          <div class="service-price">
+            <span class="price-label">Chi phí từ:</span>
+            <span class="price-value">200.000đ/tháng</span>
+          </div>
+          <a href="#" class="btn-card">Tìm Hiểu Thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">
+          <i class="fa fa-file-signature" style="color:#e65100;"></i>
+        </div>
+        <div class="service-card-body">
+          <h3>Chữ Ký Số & Hóa Đơn Điện Tử</h3>
+          <p>Đăng ký chữ ký số token, hóa đơn điện tử theo Thông tư 78/2021/TT-BTC.</p>
+          <div class="service-price">
+            <span class="price-label">Chi phí từ:</span>
+            <span class="price-value">1.800.000đ/năm</span>
+          </div>
+          <a href="#" class="btn-card">Tìm Hiểu Thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb);">
+          <i class="fa fa-graduation-cap" style="color:#0d47a1;"></i>
+        </div>
+        <div class="service-card-body">
+          <h3>Đào Tạo Kế Toán Thực Tế</h3>
+          <p>Đào tạo kế toán thực hành trên phần mềm MISA, Fast, Excel. Cấp chứng chỉ sau khi hoàn thành.</p>
+          <div class="service-price">
+            <span class="price-label">Học phí từ:</span>
+            <span class="price-value">2.500.000đ/khóa</span>
+          </div>
+          <a href="#" class="btn-card">Tìm Hiểu Thêm <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Tại Sao Chọn Chúng Tôi</div>
+      <h2>Ưu Điểm <span>Vượt Trội</span> Của Kế Toán Anpha</h2>
+      <p>Cam kết mang lại giá trị thực sự và sự yên tâm cho doanh nghiệp bạn</p>
+      <div class="divider"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-history"></i></div>
+        <h3>17 Năm Kinh Nghiệm</h3>
+        <p>Thành lập từ năm 2007, chúng tôi đã tích lũy kinh nghiệm phong phú trong lĩnh vực kế toán – thuế – pháp lý doanh nghiệp.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-user-graduate"></i></div>
+        <h3>Đội Ngũ Chuyên Nghiệp</h3>
+        <p>Hơn 200 kế toán viên có chứng chỉ hành nghề, được đào tạo bài bản và cập nhật chính sách thuế liên tục.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-lock"></i></div>
+        <h3>Bảo Mật Tuyệt Đối</h3>
+        <p>Toàn bộ dữ liệu tài chính được mã hóa và bảo mật theo tiêu chuẩn ISO 27001. Cam kết không tiết lộ thông tin khách hàng.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-clock"></i></div>
+        <h3>Xử Lý Đúng Hạn 100%</h3>
+        <p>Hệ thống nhắc hạn tự động, đội ngũ làm việc 6 ngày/tuần đảm bảo không bao giờ trễ hạn nộp thuế.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-hand-holding-usd"></i></div>
+        <h3>Chi Phí Tối Ưu</h3>
+        <p>Tiết kiệm 40–60% so với tuyển kế toán nội bộ. Chi phí minh bạch, không phát sinh ẩn, ký hợp đồng rõ ràng.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-headset"></i></div>
+        <h3>Hỗ Trợ 24/7</h3>
+        <p>Đội ngũ tư vấn luôn sẵn sàng giải đáp mọi thắc mắc qua điện thoại, Zalo, email bất kỳ lúc nào.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Quy Trình Làm Việc</div>
+      <h2>5 Bước <span>Đơn Giản</span> Để Bắt Đầu</h2>
+      <p>Quy trình chuẩn hóa, minh bạch và nhanh chóng — chỉ mất từ 1 đến 3 ngày làm việc</p>
+      <div class="divider"></div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>Tiếp Nhận Yêu Cầu</h3>
+        <p>Khách hàng liên hệ qua hotline, Zalo hoặc email</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>Tư Vấn Miễn Phí</h3>
+        <p>Chuyên gia phân tích nhu cầu và đề xuất giải pháp phù hợp</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>Ký Hợp Đồng</h3>
+        <p>Ký kết hợp đồng dịch vụ minh bạch, rõ ràng về phạm vi và chi phí</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>Thực Hiện Dịch Vụ</h3>
+        <p>Đội ngũ chuyên gia bắt đầu xử lý hồ sơ, sổ sách và báo cáo</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <h3>Bàn Giao Kết Quả</h3>
+        <p>Giao nộp đầy đủ hồ sơ, báo cáo và hỗ trợ hậu mãi dài hạn</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Kiến Thức Hữu Ích</div>
+      <h2>Tin Tức & <span>Kiến Thức</span> Mới Nhất</h2>
+      <p>Cập nhật chính sách thuế, luật doanh nghiệp và các thủ tục hành chính mới nhất</p>
+      <div class="divider"></div>
+    </div>
+    <div class="articles-grid">
+      <div>
+        <div class="articles-main">
+          <div class="article-card">
+            <div class="article-img"><i class="fa fa-building"></i></div>
+            <div class="article-body">
+              <div class="article-cat">Thành Lập Doanh Nghiệp</div>
+              <h3><a href="#">Thủ tục thành lập công ty TNHH 1 thành viên năm 2025 mới nhất</a></h3>
+              <div class="article-meta">
+                <span><i class="fa fa-calendar"></i>10/06/2025</span>
+                <span><i class="fa fa-eye"></i>15.234 lượt xem</span>
+              </div>
+            </div>
+          </div>
+          <div class="article-card">
+            <div class="article-img" style="background:linear-gradient(135deg,#fef3e2,#fde0b0); color:#f47b20;"><i class="fa fa-file-invoice-dollar"></i></div>
+            <div class="article-body">
+              <div class="article-cat">Thuế</div>
+              <h3><a href="#">Cách đặt tên công ty theo quy định mới nhất của Luật Doanh Nghiệp</a></h3>
+              <div class="article-meta">
+                <span><i class="fa fa-calendar"></i>08/06/2025</span>
+                <span><i class="fa fa-eye"></i>12.890 lượt xem</span>
+              </div>
+            </div>
+          </div>
+          <div class="article-card">
+            <div class="article-img" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9); color:#2e7d32;"><i class="fa fa-calculator"></i></div>
+            <div class="article-body">
+              <div class="article-cat">Kế Toán</div>
+              <h3><a href="#">Mức thuế môn bài năm 2025 cho hộ kinh doanh và doanh nghiệp</a></h3>
+              <div class="article-meta">
+                <span><i class="fa fa-calendar"></i>05/06/2025</span>
+                <span><i class="fa fa-eye"></i>9.456 lượt xem</span>
+              </div>
+            </div>
+          </div>
+          <div class="article-card">
+            <div class="article-img" style="background:linear-gradient(135deg,#ede7f6,#d1c4e9); color:#4527a0;"><i class="fa fa-gavel"></i></div>
+            <div class="article-body">
+              <div class="article-cat">Pháp Luật</div>
+              <h3><a href="#">Quy định về vốn điều lệ tối thiểu khi thành lập công ty 2025</a></h3>
+              <div class="article-meta">
+                <span><i class="fa fa-calendar"></i>03/06/2025</span>
+                <span><i class="fa fa-eye"></i>8.123 lượt xem</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:24px;">
+          <a href="#" style="display:inline-flex; align-items:center; gap:8px; background:var(--blue); color:#fff; padding:12px 28px; border-radius:50px; font-weight:700; font-size:14px;">
+            Xem Tất Cả Bài Viết <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="sidebar-box">
+          <div class="contact-box">
+            <h3>Tư Vấn Miễn Phí</h3>
+            <p>Gọi ngay để được tư vấn trực tiếp từ chuyên gia kế toán</p>
+            <a href="tel:19006234" class="phone"><i class="fa fa-phone-volume"></i> 1900 6234</a>
+            <a href="#" class="btn-orange"><i class="fab fa-facebook-messenger"></i> Chat Với Chúng Tôi</a>
+          </div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Bài Viết Xem Nhiều</div>
+          <ul class="sidebar-list">
+            <li><a href="#"><i class="fa fa-angle-right"></i>Thủ tục thành lập công ty cổ phần chi tiết 2025</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Hướng dẫn kê khai thuế GTGT hàng tháng</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Quy định về hóa đơn điện tử mới nhất 2025</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Mức đóng BHXH bắt buộc cho người lao động</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Thủ tục giải thể công ty TNHH nhanh nhất</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i>Cách tính thuế thu nhập cá nhân 2025</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Tra Cứu Nhanh</div>
+          <ul class="sidebar-list">
+            <li><a href="#"><i class="fa fa-search"></i>Tra Cứu Mã Số Thuế</a></li>
+            <li><a href="#"><i class="fa fa-file-search"></i>Tra Cứu Hóa Đơn</a></li>
+            <li><a href="#"><i class="fa fa-landmark"></i>Tra Cứu Doanh Nghiệp</a></li>
+            <li><a href="#"><i class="fa fa-calculator"></i>Tính Thuế Thu Nhập</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Khách Hàng Nói Gì</div>
+      <h2>Đánh Giá Từ <span>Khách Hàng</span></h2>
+      <p>Hơn 100.000 doanh nghiệp đã tin tưởng và hài lòng với dịch vụ của Kế Toán Anpha</p>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Kế Toán Anpha hỗ trợ công ty tôi từ khi mới thành lập đến nay hơn 3 năm. Đội ngũ nhiệt tình, xử lý sổ sách nhanh chóng, chưa bao giờ trễ hạn nộp báo cáo. Rất hài lòng!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">N</div>
+          <div class="author-info">
+            <strong>Nguyễn Văn Minh</strong>
+            <span>GĐ Công Ty TNHH Minh Phát, TP.HCM</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Tôi đã dùng thử nhiều đơn vị kế toán nhưng chỉ Anpha là thực sự chuyên nghiệp. Chi phí hợp lý, tư vấn tận tâm, đặc biệt hỗ trợ tốt khi bị cơ quan thuế thanh kiểm tra."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,var(--orange),#f9a73e);">T</div>
+          <div class="author-info">
+            <strong>Trần Thị Hoa</strong>
+            <span>Chủ Hộ Kinh Doanh, Hà Nội</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+        </div>
+        <p class="testimonial-text">"Thành lập công ty xong không biết làm kế toán thế nào, may mắn tìm được Anpha. Họ hướng dẫn từng bước, giải thích rõ ràng và hỗ trợ 24/7 qua Zalo. Tuyệt vời!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,#2e7d32,#66bb6a);">L</div>
+          <div class="author-info">
+            <strong>Lê Hoàng Nam</strong>
+            <span>Startup Founder, Đà Nẵng</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Bắt Đầu Ngay Hôm Nay — Miễn Phí Tư Vấn</h2>
+    <p>Liên hệ ngay để nhận báo giá dịch vụ kế toán phù hợp với quy mô doanh nghiệp của bạn</p>
+    <a href="tel:19006234" class="btn-white"><i class="fa fa-phone-volume"></i> Gọi 1900 6234 Ngay</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="lienhé">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:14px;">
+          <div class="logo-icon">A</div>
+          <div class="logo-text">
+            <strong style="color:#fff;">Kế Toán Anpha</strong>
+            <span>Dịch vụ kế toán uy tín từ 2007</span>
+          </div>
+        </div>
+        <p>Công ty Kế Toán Anpha cung cấp dịch vụ kế toán thuế, thành lập và thay đổi doanh nghiệp chuyên nghiệp trên toàn quốc từ năm 2007.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-zalo" title="Zalo">Z</i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Dịch Vụ</h4>
+        <ul>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Kế Toán Trọn Gói</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Dịch Vụ Thuế</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Thành Lập Công Ty</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Thay Đổi GPKD</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Chữ Ký Số</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Hóa Đơn Điện Tử</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Bảo Hiểm Xã Hội</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kiến Thức</h4>
+        <ul>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Tin Tức Doanh Nghiệp</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Kiến Thức Kế Toán</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Luật Thuế</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Luật Lao Động</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Câu Hỏi Thường Gặp</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Biểu Mẫu Miễn Phí</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hỗ Trợ</h4>
+        <ul>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Về Chúng Tôi</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Đối Tác</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Chính Sách Bảo Mật</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Điều Khoản Dịch Vụ</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Tuyển Dụng</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i>Liên Hệ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- OFFICES -->
+    <div class="footer-offices">
+      <div class="section-header" style="margin-bottom:28px; text-align:left;">
+        <h4 style="font-size:16px; font-weight:700; color:#fff;">Hệ Thống Văn Phòng Toàn Quốc</h4>
+      </div>
+      <div class="offices-grid">
+        <div class="office-item">
+          <div class="office-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div class="office-info">
+            <strong>TP. Hồ Chí Minh (Trụ Sở)</strong>
+            <p>144 Đinh Tiên Hoàng, P.1, Q. Bình Thạnh</p>
+            <a href="tel:02822446739"><i class="fa fa-phone"></i> (028) 2244 6739</a>
+          </div>
+        </div>
+        <div class="office-item">
+          <div class="office-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div class="office-info">
+            <strong>Hà Nội</strong>
+            <p>Tầng 7, 57 Trần Quốc Toản, Q. Hoàn Kiếm</p>
+            <a href="tel:02462955968"><i class="fa fa-phone"></i> (024) 6295 5968</a>
+          </div>
+        </div>
+        <div class="office-item">
+          <div class="office-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div class="office-info">
+            <strong>Đà Nẵng</strong>
+            <p>Tầng 5, 82 Hùng Vương, Q. Hải Châu</p>
+            <a href="tel:02363030779"><i class="fa fa-phone"></i> (0236) 3030 779</a>
+          </div>
+        </div>
+        <div class="office-item">
+          <div class="office-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div class="office-info">
+            <strong>Cần Thơ</strong>
+            <p>Số 66 Mậu Thân, Q. Ninh Kiều, TP. Cần Thơ</p>
+            <a href="tel:02923012555"><i class="fa fa-phone"></i> (0292) 3012 555</a>
+          </div>
+        </div>
+        <div class="office-item">
+          <div class="office-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div class="office-info">
+            <strong>Đồng Nai</strong>
+            <p>Số 12 Nguyễn Ái Quốc, P. Tân Hiệp, Biên Hòa</p>
+            <a href="tel:02513881288"><i class="fa fa-phone"></i> (0251) 3881 288</a>
+          </div>
+        </div>
+        <div class="office-item">
+          <div class="office-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div class="office-info">
+            <strong>Bình Dương</strong>
+            <p>Số 8 Đại lộ Bình Dương, P. Phú Hòa, TP. Thủ Dầu Một</p>
+            <a href="tel:02742222568"><i class="fa fa-phone"></i> (0274) 2222 568</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span>© 2007 – 2025 Công Ty Kế Toán Anpha. Bảo lưu mọi quyền.</span>
+      &nbsp;|&nbsp; Mã số thuế: 0307520384 &nbsp;|&nbsp;
+      <a href="#" style="color:#60a5fa;">Chính Sách Bảo Mật</a> &nbsp;|&nbsp;
+      <a href="#" style="color:#60a5fa;">Điều Khoản Sử Dụng</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="#" class="float-btn float-zalo" title="Zalo">Z</a>
+  <a href="tel:19006234" class="float-btn float-phone" title="Gọi ngay"><i class="fa fa-phone"></i></a>
+  <button class="float-btn float-top" id="scrollTop" title="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+</div>
+
+<script>
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const prog = document.getElementById('scroll-progress');
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const pct = (scrollTop / scrollHeight) * 100;
+    prog.style.width = pct + '%';
+
+    // Back to top visibility
+    const btn = document.getElementById('scrollTop');
+    if (scrollTop > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+
+  // Sticky header shadow
+  const header = document.querySelector('.site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) header.style.boxShadow = '0 4px 20px rgba(0,0,0,.12)';
+    else header.style.boxShadow = '0 2px 8px rgba(0,0,0,.08)';
+  });
+</script>
+</body>
+</html>

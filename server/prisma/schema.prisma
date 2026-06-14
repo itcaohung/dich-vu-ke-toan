@@ -1,0 +1,197 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── AUTH ────────────────────────────────────────────────
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(ADMIN)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+}
+
+// ─── CONTENT ─────────────────────────────────────────────
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slug      String   @unique
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id          Int        @id @default(autoincrement())
+  title       String
+  slug        String     @unique
+  excerpt     String?
+  content     String     @db.Text
+  thumbnail   String?
+  views       Int        @default(0)
+  status      PostStatus @default(DRAFT)
+  categoryId  Int?
+  category    Category?  @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  publishedAt DateTime?
+  deletedAt   DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  description String
+  content     String?  @db.Text
+  price       String?
+  icon        String?
+  image       String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  deletedAt   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ─── CRM ─────────────────────────────────────────────────
+model Contact {
+  id        Int           @id @default(autoincrement())
+  name      String
+  phone     String
+  email     String?
+  service   String?
+  message   String?       @db.Text
+  source    String?
+  status    ContactStatus @default(NEW)
+  note      String?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+enum ContactStatus {
+  NEW
+  CONTACTED
+  DONE
+  CANCELLED
+}
+
+// ─── SITE CONFIG ─────────────────────────────────────────
+model Office {
+  id        Int       @id @default(autoincrement())
+  name      String
+  address   String
+  phone     String?
+  email     String?
+  zalo      String?
+  mapUrl    String?
+  order     Int       @default(0)
+  isActive  Boolean   @default(true)
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Banner {
+  id        Int       @id @default(autoincrement())
+  title     String?
+  subtitle  String?
+  image     String
+  link      String?
+  order     Int       @default(0)
+  isActive  Boolean   @default(true)
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Setting {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}
+
+// ─── PAGES ───────────────────────────────────────────────
+model Page {
+  id             Int        @id @default(autoincrement())
+  title          String
+  slug           String     @unique
+  content        String     @db.Text
+  excerpt        String?
+  thumbnail      String?
+  status         PageStatus @default(DRAFT)
+  seoTitle       String?
+  seoDescription String?
+  order          Int        @default(0)
+  deletedAt      DateTime?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+enum PageStatus {
+  DRAFT
+  PUBLISHED
+}
+
+// ─── HOMEPAGE ────────────────────────────────────────────
+model Testimonial {
+  id        Int       @id @default(autoincrement())
+  name      String
+  role      String
+  company   String
+  text      String    @db.Text
+  avatar    String?
+  rating    Int       @default(5)
+  order     Int       @default(0)
+  isActive  Boolean   @default(true)
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model TeamMember {
+  id        Int       @id @default(autoincrement())
+  name      String
+  title     String
+  bio       String?
+  avatar    String?
+  order     Int       @default(0)
+  isActive  Boolean   @default(true)
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────
+model MenuItem {
+  id        Int        @id @default(autoincrement())
+  label     String
+  url       String
+  order     Int        @default(0)
+  isActive  Boolean    @default(true)
+  openNew   Boolean    @default(false)
+  parentId  Int?
+  parent    MenuItem?  @relation("MenuTree", fields: [parentId], references: [id], onDelete: Cascade)
+  children  MenuItem[] @relation("MenuTree")
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
