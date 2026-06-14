@@ -21,6 +21,7 @@ import TestimonialsPage from './pages/testimonials/TestimonialsPage'
 import TeamPage from './pages/team/TeamPage'
 import PagesListPage from './pages/pages/PagesListPage'
 import PageFormPage from './pages/pages/PageFormPage'
+import MediaPage from './pages/media/MediaPage'
 
 const qc = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 30_000 } } })
 
@@ -55,6 +56,7 @@ function ProtectedRoutes() {
         <Route path="pages/new" element={<PageFormPage />} />
         <Route path="pages/:id" element={<PageFormPage />} />
         <Route path="settings" element={<SettingsPage />} />
+        <Route path="media" element={<MediaPage />} />
       </Route>
     </Routes>
   )

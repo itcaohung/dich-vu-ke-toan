@@ -210,3 +210,35 @@ export const uploadImage = (file: File) => {
     headers: { 'Content-Type': 'multipart/form-data' },
   }).then((r) => r.data.url)
 }
+
+// ── Media ──────────────────────────────────────────────────
+export interface MediaFile {
+  url: string
+  filename: string
+  folder: string
+  size: number
+  createdAt: string
+}
+
+export interface MediaResult {
+  folders: string[]
+  files: MediaFile[]
+  total: number
+}
+
+export const fetchMedia = (params?: { folder?: string; search?: string }) =>
+  api.get<MediaResult>('/admin/upload', { params }).then((r) => r.data)
+
+export const deleteMedia = (filePath: string) =>
+  api.delete('/admin/upload', { params: { path: filePath } }).then((r) => r.data)
+
+export const uploadImages = (files: File[], onProgress?: (pct: number) => void) => {
+  const form = new FormData()
+  files.forEach((f) => form.append('files', f))
+  return api.post<{ url: string; filename: string; size: number }[]>('/admin/upload/multiple', form, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    onUploadProgress: (e) => {
+      if (onProgress && e.total) onProgress(Math.round((e.loaded * 100) / e.total))
+    },
+  }).then((r) => r.data)
+}

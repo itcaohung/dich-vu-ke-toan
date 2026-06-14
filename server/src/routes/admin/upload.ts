@@ -5,6 +5,55 @@ import { upload, getFileUrl } from '../../middleware/upload'
 import { AuthRequest } from '../../middleware/auth'
 
 const router = Router()
+const UPLOADS_DIR = path.resolve(__dirname, '../../../uploads')
+
+// GET /api/admin/upload — liệt kê tất cả file trong uploads
+router.get('/', (req: AuthRequest, res: Response, next: NextFunction) => {
+  try {
+    const folder = String(req.query.folder ?? '')
+    const search = String(req.query.search ?? '').toLowerCase()
+
+    if (!fs.existsSync(UPLOADS_DIR)) {
+      res.json({ folders: [], files: [] })
+      return
+    }
+
+    // Lấy danh sách thư mục con (YYYY-MM)
+    const folders = fs.readdirSync(UPLOADS_DIR)
+      .filter((f) => fs.statSync(path.join(UPLOADS_DIR, f)).isDirectory())
+      .sort((a, b) => b.localeCompare(a)) // mới nhất trước
+
+    // Liệt kê file trong folder được chọn (hoặc tất cả)
+    const targetFolders = folder ? [folder] : folders
+    const files: { url: string; filename: string; folder: string; size: number; createdAt: string }[] = []
+
+    for (const f of targetFolders) {
+      const dir = path.join(UPLOADS_DIR, f)
+      if (!fs.existsSync(dir)) continue
+      const names = fs.readdirSync(dir).filter((n) => !n.startsWith('.'))
+      for (const name of names) {
+        if (search && !name.toLowerCase().includes(search)) continue
+        const stat = fs.statSync(path.join(dir, name))
+        if (stat.isFile()) {
+          files.push({
+            url: `/uploads/${f}/${name}`,
+            filename: name,
+            folder: f,
+            size: stat.size,
+            createdAt: stat.birthtime.toISOString(),
+          })
+        }
+      }
+    }
+
+    // Sắp xếp mới nhất trước
+    files.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+
+    res.json({ folders, files, total: files.length })
+  } catch (err) {
+    next(err)
+  }
+})
 
 // POST /api/admin/upload  — single image
 router.post('/', upload.single('file'), (req: AuthRequest, res: Response) => {

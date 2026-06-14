@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import {
   LayoutDashboard, FileText, FolderOpen, Briefcase, MessageSquare,
-  MapPin, Image, Settings, Users, LogOut, Menu, Star, UserRound, LayoutTemplate, Upload, Trash2,
+  MapPin, Image, Settings, Users, LogOut, Menu, Star, UserRound, LayoutTemplate, Upload, Trash2, GalleryHorizontalEnd,
 } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
 import { useAuth } from '../../contexts/AuthContext'
@@ -16,6 +16,7 @@ const navItems = [
   { to: '/contacts', icon: MessageSquare, label: 'Liên hệ' },
   { to: '/offices', icon: MapPin, label: 'Chi nhánh' },
   { to: '/banners', icon: Image, label: 'Banner' },
+  { to: '/media', icon: GalleryHorizontalEnd, label: 'Media' },
   { to: '/menu', icon: Menu, label: 'Menu' },
   { to: '/pages', icon: LayoutTemplate, label: 'Trang' },
   { to: '/testimonials', icon: Star, label: 'Đánh giá KH' },
