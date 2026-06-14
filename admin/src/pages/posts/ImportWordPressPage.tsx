@@ -128,7 +128,15 @@ export default function ImportWordPressPage() {
       qc.invalidateQueries({ queryKey: ['posts'] })
       toast.success(`Nhập thành công ${data.imported} bài viết`)
     },
-    onError: () => toast.error('Nhập thất bại, vui lòng thử lại'),
+    onError: (err: unknown) => {
+      const data = (err as { response?: { data?: { message?: string; errors?: { field: string; message: string }[] } } })?.response?.data
+      if (data?.errors?.length) {
+        const detail = data.errors.slice(0, 3).map((e) => `${e.field}: ${e.message}`).join('; ')
+        toast.error(`Lỗi dữ liệu: ${detail}`, { duration: 8000 })
+      } else {
+        toast.error(data?.message ?? 'Nhập thất bại, vui lòng thử lại')
+      }
+    },
   })
 
   function handleFile(file: File) {

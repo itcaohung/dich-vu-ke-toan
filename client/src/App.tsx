@@ -16,6 +16,7 @@ import ThanhLapDongNaiPage from './pages/ThanhLapDongNaiPage'
 import ThanhLapBinhDuongPage from './pages/ThanhLapBinhDuongPage'
 import ThanhLapBaRiaVungTauPage from './pages/ThanhLapBaRiaVungTauPage'
 import DynamicPage from './pages/DynamicPage'
+import CategoryPage from './pages/CategoryPage'
 import { fetchSettings, API_BASE } from './api'
 
 const qc = new QueryClient({
@@ -72,6 +73,11 @@ export default function App() {
             <Route path="/thanh-lap-cong-ty/binh-duong" element={<ThanhLapBinhDuongPage />} />
             <Route path="/thanh-lap-cong-ty/ba-ria-vung-tau" element={<ThanhLapBaRiaVungTauPage />} />
             <Route path="/trang/:slug" element={<DynamicPage />} />
+            <Route path="/luat-doanh-nghiep" element={<CategoryPage categorySlug="luat-dn" title="Luật Doanh Nghiệp" description="Tổng hợp các quy định pháp luật liên quan đến doanh nghiệp" />} />
+            <Route path="/luat-thue" element={<CategoryPage categorySlug="luat-thue" title="Luật Thuế" description="Cập nhật các quy định về thuế dành cho doanh nghiệp" />} />
+            <Route path="/luat-lao-dong" element={<CategoryPage categorySlug="luat-lao-dong" title="Luật Lao Động" description="Các quy định về lao động, bảo hiểm và hợp đồng lao động" />} />
+            <Route path="/luat-quan-ly-chung" element={<CategoryPage categorySlug="luat-quan-ly-chung" title="Luật Quản Lý Chung" description="Các văn bản pháp luật quản lý chung cho doanh nghiệp" />} />
+            <Route path="/luat-ke-toan" element={<CategoryPage categorySlug="luat-ke-toan" title="Luật Kế Toán" description="Các quy định pháp luật về kế toán doanh nghiệp" />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -57,16 +57,16 @@ function downloadImage(url: string): Promise<string> {
 // ── Schema ────────────────────────────────────────────────────────────────────
 
 const postItemSchema = z.object({
-  title: z.string().min(1).max(500),
-  slug: z.string().max(500).optional(),
-  excerpt: z.string().max(1000).optional(),
+  title: z.string().min(1).max(1000),
+  slug: z.string().max(1000).optional(),
+  excerpt: z.string().max(10000).optional(),
   content: z.string().min(1),
   publishedAt: z.string().optional(),
-  thumbnailUrl: z.string().url().optional(),
+  thumbnailUrl: z.string().optional(),
 })
 
 const importSchema = z.object({
-  posts: z.array(postItemSchema).min(1).max(500),
+  posts: z.array(postItemSchema).min(1).max(5000),
   categoryId: z.number().int().positive().nullable().optional(),
   status: z.enum(['DRAFT', 'PUBLISHED']).default('PUBLISHED'),
 })

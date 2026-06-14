@@ -108,17 +108,34 @@ export default function BlogPage() {
 
           {/* Pagination */}
           {data && data.meta.totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2 mt-10">
+            <div className="flex items-center justify-center gap-1.5 mt-10 flex-wrap">
               <button disabled={page === 1} onClick={() => setPage(p => p - 1)}
                 className="px-4 py-2 rounded-xl border border-gray-200 text-sm font-medium disabled:opacity-40 hover:bg-gray-50 transition-colors">
                 Trước
               </button>
-              {Array.from({ length: data.meta.totalPages }, (_, i) => i + 1).map((p) => (
-                <button key={p} onClick={() => setPage(p)}
-                  className={`w-9 h-9 rounded-xl text-sm font-medium transition-colors ${p === page ? 'bg-blue-600 text-white' : 'border border-gray-200 hover:bg-gray-50'}`}>
-                  {p}
-                </button>
-              ))}
+
+              {(() => {
+                const total = data.meta.totalPages
+                const pages: (number | '...')[] = []
+                if (total <= 7) {
+                  for (let i = 1; i <= total; i++) pages.push(i)
+                } else {
+                  pages.push(1)
+                  if (page > 3) pages.push('...')
+                  for (let i = Math.max(2, page - 1); i <= Math.min(total - 1, page + 1); i++) pages.push(i)
+                  if (page < total - 2) pages.push('...')
+                  pages.push(total)
+                }
+                return pages.map((p, i) =>
+                  p === '...'
+                    ? <span key={`ellipsis-${i}`} className="px-1 text-gray-400 text-sm">...</span>
+                    : <button key={p} onClick={() => setPage(p)}
+                        className={`w-9 h-9 rounded-xl text-sm font-medium transition-colors ${p === page ? 'bg-blue-600 text-white' : 'border border-gray-200 hover:bg-gray-50'}`}>
+                        {p}
+                      </button>
+                )
+              })()}
+
               <button disabled={page === data.meta.totalPages} onClick={() => setPage(p => p + 1)}
                 className="px-4 py-2 rounded-xl border border-gray-200 text-sm font-medium disabled:opacity-40 hover:bg-gray-50 transition-colors">
                 Sau
