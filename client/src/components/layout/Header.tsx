@@ -73,8 +73,7 @@ export default function Header() {
               ? <img src={settings.logo.startsWith('http') ? settings.logo : `${API_BASE}${settings.logo}`}
                   alt={settings.site_name} className="h-10 object-contain" />
               : <div className="flex items-center gap-2">
-                  <div className="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">K</div>
-                  <span className="font-bold text-gray-900 text-lg">{settings?.site_name ?? 'Kế Toán Minh Châu'}</span>
+                  <img src="/logo.png" alt="Kế Toán Minh Châu" className="h-10 object-contain" />
                 </div>
             }
           </Link>
