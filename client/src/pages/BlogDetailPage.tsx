@@ -71,7 +71,7 @@ export default function BlogDetailPage() {
             )}
 
             <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-blue-600 prose-img:rounded-xl"
-              dangerouslySetInnerHTML={{ __html: post.content }} />
+              dangerouslySetInnerHTML={{ __html: post.content.replace(/src="\/uploads\//g, `src="${API_BASE}/uploads/`) }} />
 
             {/* Related */}
             {post.related && post.related.length > 0 && (

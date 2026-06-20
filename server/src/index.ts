@@ -27,7 +27,7 @@ app.use(
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 300,
+    max: process.env.NODE_ENV === 'production' ? 500 : 5000,
     standardHeaders: true,
     legacyHeaders: false,
   }),

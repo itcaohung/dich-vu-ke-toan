@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { ArrowLeft, Phone, CheckCircle } from 'lucide-react'
-import { fetchService, fetchSettings, fetchServices } from '../api'
+import { fetchService, fetchSettings, fetchServices, API_BASE } from '../api'
 import ContactForm from '../components/ui/ContactForm'
 
 export default function ServiceDetailPage() {
@@ -60,7 +60,7 @@ export default function ServiceDetailPage() {
             {/* Content */}
             <div className="lg:col-span-2">
               {service.content ? (
-                <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: service.content }} />
+                <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: service.content.replace(/src="\/uploads\//g, `src="${API_BASE}/uploads/`) }} />
               ) : (
                 <div className="space-y-5">
                   <h2 className="text-2xl font-bold text-gray-900">Chi tiết dịch vụ</h2>

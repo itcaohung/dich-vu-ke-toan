@@ -17,6 +17,7 @@ import ThanhLapBinhDuongPage from './pages/ThanhLapBinhDuongPage'
 import ThanhLapBaRiaVungTauPage from './pages/ThanhLapBaRiaVungTauPage'
 import DynamicPage from './pages/DynamicPage'
 import CategoryPage from './pages/CategoryPage'
+import BlogLuatPage from './pages/BlogLuatPage'
 import { fetchSettings, recordVisit, API_BASE } from './api'
 
 const qc = new QueryClient({
@@ -72,7 +73,7 @@ export default function App() {
             <Route index element={<HomePage />} />
             <Route path="/dich-vu" element={<ServicesPage />} />
             <Route path="/dich-vu/:slug" element={<ServiceDetailPage />} />
-            <Route path="/tin-tuc" element={<BlogPage />} />
+            <Route path="/tin-tuc" element={<CategoryPage categorySlug="tin-tuc" title="Tin Tức & Kiến Thức" description="Cập nhật thông tin mới nhất về kế toán, thuế và pháp luật doanh nghiệp" />} />
             <Route path="/tin-tuc/:slug" element={<BlogDetailPage />} />
             <Route path="/lien-he" element={<ContactPage />} />
             <Route path="/gioi-thieu" element={<AboutPage />} />
@@ -80,6 +81,7 @@ export default function App() {
             <Route path="/thanh-lap-cong-ty/dong-nai" element={<ThanhLapDongNaiPage />} />
             <Route path="/thanh-lap-cong-ty/binh-duong" element={<ThanhLapBinhDuongPage />} />
             <Route path="/thanh-lap-cong-ty/ba-ria-vung-tau" element={<ThanhLapBaRiaVungTauPage />} />
+            <Route path="/blog-luat" element={<BlogLuatPage />} />
             <Route path="/trang/:slug" element={<DynamicPage />} />
             <Route path="/luat-doanh-nghiep" element={<CategoryPage categorySlug="luat-dn" title="Luật Doanh Nghiệp" description="Tổng hợp các quy định pháp luật liên quan đến doanh nghiệp" />} />
             <Route path="/luat-thue" element={<CategoryPage categorySlug="luat-thue" title="Luật Thuế" description="Cập nhật các quy định về thuế dành cho doanh nghiệp" />} />

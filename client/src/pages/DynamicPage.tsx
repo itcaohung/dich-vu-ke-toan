@@ -62,7 +62,7 @@ export default function DynamicPage() {
         {/* Content */}
         <div
           className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-blue-600 prose-img:rounded-xl"
-          dangerouslySetInnerHTML={{ __html: page.content }}
+          dangerouslySetInnerHTML={{ __html: page.content.replace(/src="\/uploads\//g, `src="${API_BASE}/uploads/`) }}
         />
       </div>
 
