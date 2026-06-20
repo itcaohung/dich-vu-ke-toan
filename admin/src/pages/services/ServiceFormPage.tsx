@@ -135,10 +135,17 @@ export default function ServiceFormPage() {
           <div className="space-y-4">
             <Card className="p-5 space-y-4">
               <FormField label="Trạng thái">
-                <Select {...register('isActive', { setValueAs: (v) => v === 'true' })}>
-                  <option value="true">Hoạt động</option>
-                  <option value="false">Ẩn</option>
-                </Select>
+                <Controller name="isActive" control={control}
+                  render={({ field }) => (
+                    <Select
+                      value={field.value ? 'true' : 'false'}
+                      onChange={(e) => field.onChange(e.target.value === 'true')}
+                    >
+                      <option value="true">Hoạt động</option>
+                      <option value="false">Ẩn</option>
+                    </Select>
+                  )}
+                />
               </FormField>
               <FormField label="Thứ tự hiển thị">
                 <Input type="number" {...register('order', { valueAsNumber: true })} />
@@ -146,8 +153,8 @@ export default function ServiceFormPage() {
               <FormField label="Icon (emoji hoặc tên)">
                 <Input {...register('icon')} placeholder="🥗 hoặc leaf" />
               </FormField>
-              <Btn type="submit" variant="primary" disabled={isPending} className="w-full justify-center">
-                <Save size={16} /> {isPending ? 'Đang lưu...' : 'Lưu dịch vụ'}
+              <Btn type="submit" variant="primary" disabled={isPending || uploading} className="w-full justify-center">
+                <Save size={16} /> {isPending ? 'Đang lưu...' : uploading ? 'Đang upload ảnh...' : 'Lưu dịch vụ'}
               </Btn>
             </Card>
 
