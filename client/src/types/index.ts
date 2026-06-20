@@ -65,6 +65,7 @@ export interface SiteSettings {
   zalo?: string
   address?: string
   logo?: string
+  favicon?: string
 }
 
 export interface Testimonial {
