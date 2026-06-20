@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin, Eye, Users } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
-import { fetchSettings, fetchServices, fetchOffices } from '../../api'
+import { fetchSettings, fetchServices, fetchOffices, fetchVisits } from '../../api'
 
 export default function Footer() {
   const { data: settings } = useQuery({ queryKey: ['settings'], queryFn: fetchSettings })
   const { data: services = [] } = useQuery({ queryKey: ['services'], queryFn: fetchServices })
   const { data: offices = [] } = useQuery({ queryKey: ['offices'], queryFn: fetchOffices })
+  const { data: visits } = useQuery({ queryKey: ['visits'], queryFn: fetchVisits, refetchInterval: 60_000 })
 
   const mainOffice = offices[0]
 
@@ -107,6 +108,35 @@ export default function Footer() {
                 </li>
               )}
             </ul>
+
+            {/* Bộ đếm lượt truy cập */}
+            <div className="mt-5 pt-4 border-t border-gray-700/60">
+              <p className="text-xs text-gray-500 uppercase tracking-wider mb-2.5">Lượt truy cập</p>
+              <div className="flex gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 bg-blue-600/20 rounded-md flex items-center justify-center">
+                    <Eye size={13} className="text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold text-sm leading-none">
+                      {(visits?.total ?? 0).toLocaleString('vi-VN')}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-0.5">Tổng cộng</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 bg-green-600/20 rounded-md flex items-center justify-center">
+                    <Users size={13} className="text-green-400" />
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold text-sm leading-none">
+                      {(visits?.today ?? 0).toLocaleString('vi-VN')}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-0.5">Hôm nay</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

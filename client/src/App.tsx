@@ -17,7 +17,7 @@ import ThanhLapBinhDuongPage from './pages/ThanhLapBinhDuongPage'
 import ThanhLapBaRiaVungTauPage from './pages/ThanhLapBaRiaVungTauPage'
 import DynamicPage from './pages/DynamicPage'
 import CategoryPage from './pages/CategoryPage'
-import { fetchSettings, API_BASE } from './api'
+import { fetchSettings, recordVisit, API_BASE } from './api'
 
 const qc = new QueryClient({
   defaultOptions: { queries: { retry: 1, staleTime: 60_000 } },
@@ -25,6 +25,14 @@ const qc = new QueryClient({
 
 function SiteHead() {
   const { data: settings } = useQuery({ queryKey: ['settings'], queryFn: fetchSettings })
+
+  useEffect(() => {
+    // Đếm 1 lượt/session
+    if (!sessionStorage.getItem('visited')) {
+      sessionStorage.setItem('visited', '1')
+      recordVisit().catch(() => {})
+    }
+  }, [])
 
   useEffect(() => {
     if (!settings) return

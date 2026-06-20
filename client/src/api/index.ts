@@ -44,3 +44,9 @@ export const fetchPage = (slug: string) =>
 export const submitContact = (data: {
   name: string; phone: string; email?: string; service?: string; message?: string
 }) => api.post('/contacts', data).then((r) => r.data)
+
+export const fetchVisits = () =>
+  api.get<{ total: number; today: number }>('/visits').then((r) => r.data)
+
+export const recordVisit = () =>
+  api.post<{ total: number; today: number }>('/visits').then((r) => r.data)

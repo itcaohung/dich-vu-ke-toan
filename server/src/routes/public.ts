@@ -257,4 +257,75 @@ router.get('/pages/:slug', async (req: Request, res: Response, next: NextFunctio
   } catch (err) { next(err) }
 })
 
+// ── Visitor counter ───────────────────────────────────────
+
+// GET /api/visits — lấy số liệu lượt truy cập
+router.get('/visits', async (_req: Request, res: Response, next: NextFunction) => {
+  try {
+    const [total, todayCount, todayDate] = await Promise.all([
+      prisma.setting.findUnique({ where: { key: 'visitor_total' } }),
+      prisma.setting.findUnique({ where: { key: 'visitor_today' } }),
+      prisma.setting.findUnique({ where: { key: 'visitor_today_date' } }),
+    ])
+    const today = new Date().toISOString().slice(0, 10)
+    const isToday = todayDate?.value === today
+    res.json({
+      total: Number(total?.value ?? 0),
+      today: isToday ? Number(todayCount?.value ?? 0) : 0,
+    })
+  } catch (err) { next(err) }
+})
+
+// POST /api/visits — ghi nhận 1 lượt truy cập
+router.post('/visits', async (_req: Request, res: Response, next: NextFunction) => {
+  try {
+    const today = new Date().toISOString().slice(0, 10)
+
+    // Ensure records exist, then increment atomically
+    await prisma.setting.upsert({
+      where: { key: 'visitor_total' },
+      update: {},
+      create: { key: 'visitor_total', value: '0', updatedAt: new Date() },
+    })
+    await prisma.$executeRaw`
+      UPDATE "Setting" SET value = (CAST(value AS INTEGER) + 1)::TEXT, "updatedAt" = NOW()
+      WHERE key = 'visitor_total'
+    `
+
+    const todayDate = await prisma.setting.findUnique({ where: { key: 'visitor_today_date' } })
+    if (todayDate?.value === today) {
+      await prisma.$executeRaw`
+        UPDATE "Setting" SET value = (CAST(value AS INTEGER) + 1)::TEXT, "updatedAt" = NOW()
+        WHERE key = 'visitor_today'
+      `
+    } else {
+      await prisma.setting.upsert({
+        where: { key: 'visitor_today_date' },
+        update: { value: today, updatedAt: new Date() },
+        create: { key: 'visitor_today_date', value: today, updatedAt: new Date() },
+      })
+      await prisma.setting.upsert({
+        where: { key: 'visitor_today' },
+        update: { value: '1', updatedAt: new Date() },
+        create: { key: 'visitor_today', value: '1', updatedAt: new Date() },
+      })
+    }
+
+    const [newTotal, newToday] = await Promise.all([
+      prisma.setting.findUnique({ where: { key: 'visitor_total' } }),
+      prisma.setting.findUnique({ where: { key: 'visitor_today' } }),
+    ])
+    res.json({ total: Number(newTotal?.value ?? 1), today: Number(newToday?.value ?? 1) })
+  } catch (err) { next(err) }
+})
+
+void (async () => {
+  // Khởi tạo counter nếu chưa có
+  await prisma.setting.upsert({
+    where: { key: 'visitor_total' },
+    update: {},
+    create: { key: 'visitor_total', value: '0', updatedAt: new Date() },
+  }).catch(() => {})
+})()
+
 export default router
