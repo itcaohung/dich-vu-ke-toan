@@ -7,13 +7,15 @@ WORKDIR /app
 COPY package*.json ./
 COPY prisma ./prisma/
 
-RUN npm ci
+RUN npm ci --include=dev
 
 RUN npx prisma generate
 
 COPY . .
 
 RUN npm run build
+
+RUN mkdir -p /app/uploads
 
 EXPOSE 4000
 
