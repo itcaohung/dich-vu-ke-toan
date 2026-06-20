@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Plus, Pencil, Trash2, Eye, Search } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { fetchPosts, deletePost, bulkDeletePosts, fetchCategories } from '../../api'
-import { PageHeader, Card, Spinner, Badge, Table, Btn } from '../../components/ui'
+import { PageHeader, Card, Spinner, Badge, Btn } from '../../components/ui'
 
 const statusLabel: Record<string, { label: string; variant: 'green' | 'gray' }> = {
   PUBLISHED: { label: 'Đã đăng', variant: 'green' },

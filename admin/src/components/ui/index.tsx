@@ -1,11 +1,14 @@
 import type { ReactNode } from 'react'
 import { Loader2 } from 'lucide-react'
 
-export function PageHeader({ title, children }: { title: string; children?: ReactNode }) {
+export function PageHeader({ title, subtitle, action, children }: { title: string; subtitle?: string; action?: ReactNode; children?: ReactNode }) {
   return (
     <div className="flex items-center justify-between mb-6">
-      <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
-      {children && <div className="flex items-center gap-2">{children}</div>}
+      <div>
+        <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
+        {subtitle && <p className="text-sm text-gray-500 mt-0.5">{subtitle}</p>}
+      </div>
+      {(action || children) && <div className="flex items-center gap-2">{action}{children}</div>}
     </div>
   )
 }
@@ -69,6 +72,7 @@ export function Btn({
   disabled = false,
   className = '',
   form,
+  icon,
 }: {
   children: ReactNode
   onClick?: () => void
@@ -78,6 +82,7 @@ export function Btn({
   disabled?: boolean
   className?: string
   form?: string
+  icon?: ReactNode
 }) {
   const base = 'inline-flex items-center gap-1.5 font-medium rounded-lg transition-colors disabled:opacity-50'
   const sizes = { sm: 'px-3 py-1.5 text-sm', md: 'px-4 py-2 text-sm' }
@@ -95,7 +100,7 @@ export function Btn({
       form={form}
       className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
     >
-      {children}
+      {icon}{children}
     </button>
   )
 }

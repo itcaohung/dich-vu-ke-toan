@@ -18,8 +18,8 @@ const initials = (name: string) => name.split(' ').slice(-2).map((w) => w[0]).jo
 const schema = z.object({
   name:     z.string().min(1, 'Vui lòng nhập tên'),
   title:    z.string().min(1, 'Vui lòng nhập chức danh'),
-  bio:      z.string().optional().nullable(),
-  avatar:   z.string().optional().nullable(),
+  bio:      z.string().optional(),
+  avatar:   z.string().optional(),
   order:    z.number().int(),
   isActive: z.boolean(),
 })

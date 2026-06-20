@@ -15,12 +15,12 @@ const schema = z.object({
   title:          z.string().min(1, 'Vui lòng nhập tiêu đề'),
   slug:           z.string().min(1, 'Vui lòng nhập slug').regex(/^[a-z0-9-]+$/, 'Slug chỉ gồm a-z, 0-9, dấu -'),
   excerpt:        z.string().optional(),
-  content:        z.string().default(''),
+  content:        z.string(),
   thumbnail:      z.string().optional(),
   status:         z.enum(['DRAFT', 'PUBLISHED']),
   seoTitle:       z.string().optional(),
   seoDescription: z.string().optional(),
-  order:          z.number().int().default(0),
+  order:          z.number().int(),
 })
 
 type FormData = z.infer<typeof schema>

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { Upload, FileText, CheckCircle2, XCircle, AlertCircle, ChevronDown, ChevronUp, X } from 'lucide-react'
+import { Upload, FileText, CheckCircle2, XCircle, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { fetchCategories, importWordPress } from '../../api'
 import { PageHeader, Card, Badge, Btn, Select } from '../../components/ui'
