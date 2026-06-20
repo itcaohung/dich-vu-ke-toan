@@ -17,4 +17,4 @@ RUN npm run build
 
 EXPOSE 4000
 
-CMD npx prisma migrate deploy && node dist/index.js
+CMD npx prisma migrate resolve --rolled-back "20260620000000_init" 2>/dev/null; npx prisma migrate deploy && node dist/index.js
