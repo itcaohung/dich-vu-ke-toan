@@ -52,10 +52,10 @@ export default function Header() {
   })
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm border-b border-gray-200/70'}`}>
       {/* Top bar */}
       <div className="bg-blue-700 text-white text-xs py-1.5 hidden md:block">
-        <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
+        <div className="max-w-site mx-auto px-4 flex items-center justify-between">
           <span>Tư vấn miễn phí — Gọi ngay: <strong>{settings?.hotline ?? '0901 234 567'}</strong></span>
           <div className="flex items-center gap-4">
             {settings?.email && <span>{settings.email}</span>}
@@ -66,7 +66,7 @@ export default function Header() {
       </div>
 
       {/* Main nav */}
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-site mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2">
             {settings?.logo
@@ -143,7 +143,7 @@ export default function Header() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
-          <nav className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
+          <nav className="max-w-site mx-auto px-4 py-3 flex flex-col gap-1">
             {navItems.map((item) => (
               <div key={item.id}>
                 {isExternal(item.url) ? (

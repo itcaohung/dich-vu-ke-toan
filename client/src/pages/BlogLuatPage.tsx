@@ -29,7 +29,7 @@ export default function BlogLuatPage() {
     <div>
       {/* Hero */}
       <section className="bg-gradient-to-br from-blue-700 to-blue-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="max-w-site mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-3">Blog Luật</h1>
           <p className="text-blue-100 text-lg max-w-xl mx-auto">
             Tổng hợp kiến thức pháp luật doanh nghiệp — thuế, kế toán, lao động và quản lý
@@ -39,7 +39,7 @@ export default function BlogLuatPage() {
 
       {/* Category tabs */}
       <div className="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="flex gap-1 overflow-x-auto scrollbar-hide py-2">
             {SECTIONS.map((s) => (
               <a key={s.slug} href={`#${s.slug}`}
@@ -51,7 +51,7 @@ export default function BlogLuatPage() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-14 space-y-16">
+      <div className="max-w-site mx-auto px-4 py-14 space-y-16">
         {SECTIONS.map((section, idx) => {
           const { data, isLoading } = results[idx]
           const posts = data?.data ?? []

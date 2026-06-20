@@ -26,7 +26,7 @@ export default function BlogPage() {
   return (
     <div>
       <section className="bg-gradient-to-br from-blue-700 to-blue-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="max-w-site mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-3">Tin Tức & Kiến Thức</h1>
           <p className="text-blue-100 text-lg max-w-xl mx-auto">
             Cập nhật thông tin mới nhất về kế toán, thuế và pháp luật doanh nghiệp
@@ -35,7 +35,7 @@ export default function BlogPage() {
       </section>
 
       <section className="py-14">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           {/* Filter bar */}
           <div className="flex flex-wrap gap-3 mb-8">
             <div className="relative flex-1 min-w-60">

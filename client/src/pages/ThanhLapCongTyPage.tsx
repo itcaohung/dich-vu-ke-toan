@@ -252,7 +252,7 @@ export default function ThanhLapCongTyPage() {
     <div>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="bg-gradient-to-br from-blue-800 via-blue-700 to-indigo-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-blue-200 text-sm mb-6">
             <Link to="/" className="hover:text-white transition-colors">Trang chủ</Link>
@@ -318,7 +318,7 @@ export default function ThanhLapCongTyPage() {
 
       {/* ── Stats bar ────────────────────────────────────────── */}
       <section className="bg-blue-900">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-blue-800">
             {stats.map(({ value, label }) => (
               <div key={label} className="text-center py-5 px-4">
@@ -332,7 +332,7 @@ export default function ThanhLapCongTyPage() {
 
       {/* ── Điều kiện & Hồ sơ ───────────────────────────────── */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full mb-3">
               Chuẩn bị
@@ -395,7 +395,7 @@ export default function ThanhLapCongTyPage() {
 
       {/* ── Loại hình doanh nghiệp ──────────────────────────── */}
       <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full mb-3">
               Loại hình
@@ -456,7 +456,7 @@ export default function ThanhLapCongTyPage() {
 
       {/* ── Quy trình ───────────────────────────────────────── */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full mb-3">
               Quy trình
@@ -496,7 +496,7 @@ export default function ThanhLapCongTyPage() {
 
       {/* ── Kết quả bàn giao + Lý do chọn ──────────────────── */}
       <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
             <div>
               <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full mb-4">

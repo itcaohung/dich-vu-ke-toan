@@ -29,7 +29,7 @@ export default function CategoryPage({ categorySlug, title, description }: Props
   return (
     <div>
       <section className="bg-gradient-to-br from-blue-700 to-blue-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="max-w-site mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-3">{title}</h1>
           {description && (
             <p className="text-blue-100 text-lg max-w-xl mx-auto">{description}</p>
@@ -38,7 +38,7 @@ export default function CategoryPage({ categorySlug, title, description }: Props
       </section>
 
       <section className="py-14">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           {/* Search */}
           <div className="mb-8 max-w-md">
             <div className="relative">

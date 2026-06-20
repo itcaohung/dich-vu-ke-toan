@@ -11,7 +11,7 @@ export default function ServicesPage() {
     <div>
       {/* Page header */}
       <section className="bg-gradient-to-br from-blue-700 to-blue-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="max-w-site mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-3">Dịch Vụ</h1>
           <p className="text-blue-100 text-lg max-w-xl mx-auto">
             Giải pháp kế toán, thuế và pháp lý toàn diện cho doanh nghiệp
@@ -20,7 +20,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           {isLoading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {Array.from({ length: 6 }).map((_, i) => (

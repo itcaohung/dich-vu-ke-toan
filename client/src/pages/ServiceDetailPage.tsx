@@ -33,7 +33,7 @@ export default function ServiceDetailPage() {
     <div>
       {/* Header */}
       <section className="bg-gradient-to-br from-blue-700 to-blue-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <Link to="/dich-vu" className="inline-flex items-center gap-1 text-blue-200 hover:text-white text-sm mb-5 transition-colors">
             <ArrowLeft size={15} /> Tất cả dịch vụ
           </Link>
@@ -55,7 +55,7 @@ export default function ServiceDetailPage() {
       </section>
 
       <section className="py-14">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Content */}
             <div className="lg:col-span-2">

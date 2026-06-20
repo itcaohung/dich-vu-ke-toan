@@ -171,7 +171,7 @@ export default function ThanhLapTemplate({ data }: { data: ProvinceData }) {
     <div>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="bg-gradient-to-br from-blue-800 via-blue-700 to-indigo-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <nav className="flex items-center gap-2 text-blue-200 text-sm mb-6">
             <Link to="/" className="hover:text-white transition-colors">Trang chủ</Link>
             <span>/</span>
@@ -223,7 +223,7 @@ export default function ThanhLapTemplate({ data }: { data: ProvinceData }) {
 
       {/* ── Khu vực phục vụ ──────────────────────────────────── */}
       <section className="bg-blue-900 py-8">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
             <div className="flex items-center gap-2 text-yellow-300 font-semibold text-sm whitespace-nowrap">
               <MapPin size={16} />
@@ -242,7 +242,7 @@ export default function ThanhLapTemplate({ data }: { data: ProvinceData }) {
 
       {/* ── Hồ sơ cần thiết ─────────────────────────────────── */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full mb-3">Chuẩn bị</span>
             <h2 className="text-3xl font-bold text-gray-900">Khách Hàng Cần Cung Cấp Gì?</h2>
@@ -299,7 +299,7 @@ export default function ThanhLapTemplate({ data }: { data: ProvinceData }) {
 
       {/* ── Loại hình doanh nghiệp ──────────────────────────── */}
       <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full mb-3">Loại hình</span>
             <h2 className="text-3xl font-bold text-gray-900">Nên Chọn Loại Hình Nào?</h2>
@@ -329,7 +329,7 @@ export default function ThanhLapTemplate({ data }: { data: ProvinceData }) {
 
       {/* ── Quy trình ───────────────────────────────────────── */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full mb-3">Quy trình</span>
             <h2 className="text-3xl font-bold text-gray-900">3 Bước Thành Lập Công Ty</h2>
@@ -361,7 +361,7 @@ export default function ThanhLapTemplate({ data }: { data: ProvinceData }) {
 
       {/* ── Kết quả & Lý do chọn ────────────────────────────── */}
       <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
             <div>
               <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full mb-4">Kết quả bàn giao</span>

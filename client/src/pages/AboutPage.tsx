@@ -24,7 +24,7 @@ export default function AboutPage() {
   return (
     <div>
       <section className="bg-gradient-to-br from-blue-700 to-blue-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="max-w-site mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-3">Về Chúng Tôi</h1>
           <p className="text-blue-100 text-lg max-w-xl mx-auto">
             {settings?.site_description ?? 'Đơn vị tư vấn kế toán – thuế – pháp lý doanh nghiệp uy tín hàng đầu'}
@@ -34,7 +34,7 @@ export default function AboutPage() {
 
       {/* Story */}
       <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-5">Câu chuyện của chúng tôi</h2>
@@ -65,7 +65,7 @@ export default function AboutPage() {
 
       {/* Giá trị cốt lõi */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">Giá Trị Cốt Lõi</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map(({ title, desc }) => (
@@ -84,7 +84,7 @@ export default function AboutPage() {
       {/* Văn phòng */}
       {offices.length > 0 && (
         <section className="py-16">
-          <div className="max-w-6xl mx-auto px-4">
+          <div className="max-w-site mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">Hệ Thống Văn Phòng</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {offices.map((o) => (

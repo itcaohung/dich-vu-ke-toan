@@ -127,7 +127,7 @@ export default function CompanyFormationPage() {
     <div>
       {/* Hero */}
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white py-14">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="flex items-center gap-2 text-blue-200 text-sm mb-4">
             <Link to="/" className="hover:text-white transition-colors">Trang chủ</Link>
             <span>/</span>
@@ -179,7 +179,7 @@ export default function CompanyFormationPage() {
 
       {/* Điều kiện & Hồ sơ */}
       <section className="py-14 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-2">Chuẩn bị</p>
             <h2 className="text-3xl font-bold text-gray-900">Điều Kiện & Hồ Sơ Cần Thiết</h2>
@@ -217,7 +217,7 @@ export default function CompanyFormationPage() {
 
       {/* Quy trình */}
       <section className="py-14 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-2">Quy trình</p>
             <h2 className="text-3xl font-bold text-gray-900">3 Bước Thành Lập Công Ty</h2>
@@ -246,7 +246,7 @@ export default function CompanyFormationPage() {
 
       {/* Kết quả bàn giao */}
       <section className="py-14 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-2">Bàn giao</p>

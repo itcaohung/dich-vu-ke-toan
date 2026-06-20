@@ -10,14 +10,14 @@ export default function ContactPage() {
   return (
     <div>
       <section className="bg-gradient-to-br from-blue-700 to-blue-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="max-w-site mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-3">Liên Hệ</h1>
           <p className="text-blue-100 text-lg">Chúng tôi luôn sẵn sàng hỗ trợ bạn</p>
         </div>
       </section>
 
       <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Form */}
             <div className="bg-white rounded-2xl border border-gray-200 p-8">
