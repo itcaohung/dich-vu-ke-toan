@@ -150,6 +150,9 @@ router.get('/settings', async (_req: Request, res: Response, next: NextFunction)
     const PUBLIC_KEYS = [
       'site_name', 'site_description', 'hotline', 'email',
       'facebook', 'youtube', 'zalo', 'address', 'logo', 'favicon',
+      'home_show_quick_services', 'home_show_stats', 'home_show_services',
+      'home_show_why_us', 'home_show_team', 'home_show_blog',
+      'home_show_testimonials', 'home_show_contact',
     ]
     const settings = await prisma.setting.findMany({ where: { key: { in: PUBLIC_KEYS } } })
     const map = Object.fromEntries(settings.map((s) => [s.key, s.value]))
