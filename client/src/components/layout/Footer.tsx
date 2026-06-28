@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Phone, Mail, MapPin, Eye, Users } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
-import { fetchSettings, fetchServices, fetchOffices, fetchVisits } from '../../api'
+import { fetchSettings, fetchServices, fetchOffices, fetchVisits, API_BASE } from '../../api'
 
 export default function Footer() {
   const { data: settings } = useQuery({ queryKey: ['settings'], queryFn: fetchSettings })
@@ -18,8 +18,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">K</div>
-              <span className="font-bold text-white text-lg">{settings?.site_name ?? 'Kế Toán Việt Á Châu'}</span>
+              {settings?.logo
+                ? <img src={settings.logo.startsWith('http') ? settings.logo : `${API_BASE}${settings.logo}`}
+                    alt={settings.site_name} className="h-[60px] object-contain" />
+                : <img src="/logo.png" alt="Kế Toán Việt Á Châu" className="h-[60px] object-contain" />
+              }
             </div>
             <p className="text-sm leading-relaxed mb-5 text-gray-400">
               {settings?.site_description ?? 'Đơn vị tư vấn kế toán – thuế – pháp lý doanh nghiệp uy tín, chuyên nghiệp.'}
