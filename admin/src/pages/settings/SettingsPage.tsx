@@ -22,7 +22,26 @@ type SettingsForm = {
   zalo: string
   logo: string
   favicon: string
+  home_show_quick_services: string
+  home_show_stats: string
+  home_show_services: string
+  home_show_why_us: string
+  home_show_team: string
+  home_show_blog: string
+  home_show_testimonials: string
+  home_show_contact: string
 }
+
+const HOME_SECTIONS = [
+  { key: 'home_show_quick_services', label: '4 dịch vụ nổi bật' },
+  { key: 'home_show_stats',          label: 'Thanh số liệu (16+ năm, 70.000+...)' },
+  { key: 'home_show_services',       label: 'Tất cả dịch vụ' },
+  { key: 'home_show_why_us',         label: 'Tại sao chọn chúng tôi' },
+  { key: 'home_show_team',           label: 'Đội ngũ' },
+  { key: 'home_show_blog',           label: 'Tin tức & kiến thức' },
+  { key: 'home_show_testimonials',   label: 'Đánh giá khách hàng' },
+  { key: 'home_show_contact',        label: 'Form liên hệ' },
+] as const
 
 function ImageUploadField({
   label,
@@ -176,6 +195,28 @@ export default function SettingsPage() {
             <FormField label="Zalo">
               <Input {...register('zalo')} placeholder="0901234567" />
             </FormField>
+          </Card>
+          <Card className="p-5 space-y-4 xl:col-span-2">
+            <h2 className="font-medium text-gray-900 pb-2 border-b border-gray-100">Trang chủ — Ẩn / Hiện section</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {HOME_SECTIONS.map(({ key, label }) => {
+                const val = watch(key as keyof SettingsForm)
+                const isOn = val !== 'false'
+                return (
+                  <label key={key} className="flex items-center justify-between gap-4 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 cursor-pointer select-none">
+                    <span className="text-sm text-gray-700">{label}</span>
+                    <button
+                      type="button"
+                      onClick={() => setValue(key as keyof SettingsForm, isOn ? 'false' : 'true')}
+                      className={`relative inline-flex h-6 w-11 shrink-0 rounded-full transition-colors duration-200 focus:outline-none ${isOn ? 'bg-blue-600' : 'bg-gray-300'}`}
+                    >
+                      <span className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform duration-200 mt-0.5 ${isOn ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                    </button>
+                    <input type="hidden" {...register(key as keyof SettingsForm)} />
+                  </label>
+                )
+              })}
+            </div>
           </Card>
         </div>
       </form>

@@ -106,6 +106,9 @@ export default function HomePage() {
     { n: '04', t: 'Bàn giao & hỗ trợ', d: 'Bàn giao kết quả và hỗ trợ hậu mãi trọn đời dịch vụ' },
   ]
 
+  // setting mặc định là hiển thị (chỉ ẩn khi value === 'false')
+  const show = (key: keyof typeof settings) => (settings as Record<string, string> | undefined)?.[key] !== 'false'
+
   return (
     <div className="bg-white">
       {/* ── Hero dịch vụ + hotline ── */}
@@ -136,7 +139,7 @@ export default function HomePage() {
       </div>
 
       {/* ── Top 4 dịch vụ nổi bật ── */}
-      <section className="bg-white border-b border-gray-100">
+      {show('home_show_quick_services') && <section className="bg-white border-b border-gray-100">
         <div className="max-w-site mx-auto px-4 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {services.slice(0, 4).map((s, i) => {
@@ -154,10 +157,10 @@ export default function HomePage() {
             })}
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ── Stats ── */}
-      <section className="bg-gray-50 py-4">
+      {show('home_show_stats') && <section className="bg-gray-50 py-4">
         <div className="max-w-site mx-auto px-4">
           <div className="bg-blue-700 text-white px-8 py-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -175,10 +178,10 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ── Tất cả dịch vụ ── */}
-      <section className="py-14 bg-gray-50">
+      {show('home_show_services') && <section className="py-14 bg-gray-50">
         <div className="max-w-site mx-auto px-4">
           <div className="flex items-end justify-between mb-8">
             <div>
@@ -219,10 +222,10 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ── Tại sao chọn chúng tôi ── */}
-      <section className="py-14 bg-white">
+      {show('home_show_why_us') && <section className="py-14 bg-white">
         <div className="max-w-site mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left: why us */}
@@ -263,10 +266,10 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ── Đội ngũ ── */}
-      {teamMembers.filter(m => m.isActive).length > 0 && (
+      {show('home_show_team') && teamMembers.filter(m => m.isActive).length > 0 && (
         <section className="py-14 bg-white border-t border-gray-100">
           <div className="max-w-site mx-auto px-4">
             <div className="text-center mb-10">
@@ -300,7 +303,7 @@ export default function HomePage() {
       )}
 
       {/* ── Tin tức & kiến thức ── */}
-      {posts.length > 0 && (
+      {show('home_show_blog') && posts.length > 0 && (
         <section className="py-14 bg-gray-50 border-t border-gray-100">
           <div className="max-w-site mx-auto px-4">
             <div className="flex items-end justify-between mb-8">
@@ -379,7 +382,7 @@ export default function HomePage() {
       )}
 
       {/* ── Đánh giá khách hàng ── */}
-      {testimonials.length > 0 && (
+      {show('home_show_testimonials') && testimonials.length > 0 && (
         <section className="py-14 bg-white border-t border-gray-100">
           <div className="max-w-site mx-auto px-4">
             <div className="text-center mb-8">
@@ -415,7 +418,7 @@ export default function HomePage() {
       )}
 
       {/* ── Form liên hệ ── */}
-      <section className="py-14 bg-blue-700">
+      {show('home_show_contact') && <section className="py-14 bg-blue-700">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="text-white">
@@ -442,7 +445,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ── Floating contact buttons ── */}
       <div className="fixed right-4 bottom-24 z-50 flex flex-col gap-2">

@@ -66,6 +66,14 @@ export interface SiteSettings {
   address?: string
   logo?: string
   favicon?: string
+  home_show_quick_services?: string
+  home_show_stats?: string
+  home_show_services?: string
+  home_show_why_us?: string
+  home_show_team?: string
+  home_show_blog?: string
+  home_show_testimonials?: string
+  home_show_contact?: string
 }
 
 export interface Testimonial {
