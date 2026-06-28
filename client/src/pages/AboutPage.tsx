@@ -40,7 +40,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-5">Câu chuyện của chúng tôi</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  {settings?.site_name ?? 'Kế Toán Minh Châu'} được thành lập với sứ mệnh đồng hành cùng doanh nghiệp Việt trong hành trình phát triển bền vững. Chúng tôi hiểu rằng mỗi doanh nghiệp có những thách thức riêng trong quản lý tài chính và tuân thủ pháp luật.
+                  {settings?.site_name ?? 'Kế Toán Việt Á Châu'} được thành lập với sứ mệnh đồng hành cùng doanh nghiệp Việt trong hành trình phát triển bền vững. Chúng tôi hiểu rằng mỗi doanh nghiệp có những thách thức riêng trong quản lý tài chính và tuân thủ pháp luật.
                 </p>
                 <p>
                   Với đội ngũ chuyên viên giàu kinh nghiệm, chúng tôi cung cấp dịch vụ kế toán toàn diện, từ thành lập doanh nghiệp, kê khai thuế đến tư vấn pháp lý — giúp khách hàng an tâm tập trung phát triển kinh doanh.

@@ -42,7 +42,7 @@ export default function Sidebar() {
   return (
     <aside className="w-60 bg-gray-900 text-white flex flex-col h-screen sticky top-0">
       <div className="px-4 py-5 border-b border-gray-700">
-        <p className="font-bold text-lg">Kế Toán Minh Châu</p>
+        <p className="font-bold text-lg">Kế Toán Việt Á Châu</p>
         <p className="text-xs text-gray-400 mt-0.5">Quản trị hệ thống</p>
       </div>
 

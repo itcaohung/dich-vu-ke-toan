@@ -128,7 +128,7 @@ export default function PageFormPage() {
 
               <FormField label="Slug (đường dẫn)" error={errors.slug?.message}>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-400 whitespace-nowrap">ketoanminhchau.vn/trang/</span>
+                  <span className="text-sm text-gray-400 whitespace-nowrap">ketoanvietachau.vn/trang/</span>
                   <Input {...register('slug')} placeholder="gioi-thieu-cong-ty" className="flex-1" />
                   {slugValue && page?.status === 'PUBLISHED' && (
                     <a

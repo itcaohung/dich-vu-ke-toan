@@ -228,7 +228,7 @@ export default function HomePage() {
             {/* Left: why us */}
             <div>
               <span className="text-orange-600 text-sm font-semibold uppercase tracking-wider">Cam kết của chúng tôi</span>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-1 mb-6">Tại Sao Chọn Kế Toán Minh Châu?</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-1 mb-6">Tại Sao Chọn Kế Toán Việt Á Châu?</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {whyUs.map((item) => (
                   <div key={item.title} className="flex gap-3">

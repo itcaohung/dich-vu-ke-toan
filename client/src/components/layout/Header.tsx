@@ -73,7 +73,7 @@ export default function Header() {
               ? <img src={settings.logo.startsWith('http') ? settings.logo : `${API_BASE}${settings.logo}`}
                   alt={settings.site_name} className="h-10 object-contain" />
               : <div className="flex items-center gap-2">
-                  <img src="/logo.png" alt="Kế Toán Minh Châu" className="h-10 object-contain" />
+                  <img src="/logo.png" alt="Kế Toán Việt Á Châu" className="h-10 object-contain" />
                 </div>
             }
           </Link>

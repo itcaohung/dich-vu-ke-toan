@@ -135,7 +135,7 @@ export default function SettingsPage() {
           <Card className="p-5 space-y-4">
             <h2 className="font-medium text-gray-900 pb-2 border-b border-gray-100">Thông tin chung</h2>
             <FormField label="Tên website">
-              <Input {...register('site_name')} placeholder="Kế Toán Minh Châu" />
+              <Input {...register('site_name')} placeholder="Kế Toán Việt Á Châu" />
             </FormField>
             <FormField label="Mô tả website">
               <Textarea {...register('site_description')} rows={3} placeholder="Mô tả ngắn hiển thị trên SEO..." />
@@ -162,16 +162,16 @@ export default function SettingsPage() {
               <Input {...register('hotline')} placeholder="0901 234 567" />
             </FormField>
             <FormField label="Email">
-              <Input {...register('email')} type="email" placeholder="info@ketoanminhchau.vn" />
+              <Input {...register('email')} type="email" placeholder="info@ketoanvietachau.vn" />
             </FormField>
             <FormField label="Địa chỉ">
               <Input {...register('address')} placeholder="123 Đường ABC, TP.HCM" />
             </FormField>
             <FormField label="Facebook">
-              <Input {...register('facebook')} placeholder="https://facebook.com/ketoanminhchau" />
+              <Input {...register('facebook')} placeholder="https://facebook.com/ketoanvietachau" />
             </FormField>
             <FormField label="YouTube">
-              <Input {...register('youtube')} placeholder="https://youtube.com/@ketoanminhchau" />
+              <Input {...register('youtube')} placeholder="https://youtube.com/@ketoanvietachau" />
             </FormField>
             <FormField label="Zalo">
               <Input {...register('zalo')} placeholder="0901234567" />

@@ -30,7 +30,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-gray-900">Kế Toán Minh Châu</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Kế Toán Việt Á Châu</h1>
             <p className="text-gray-500 mt-1 text-sm">Đăng nhập quản trị</p>
           </div>
 

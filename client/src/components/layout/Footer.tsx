@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-9 h-9 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">K</div>
-              <span className="font-bold text-white text-lg">{settings?.site_name ?? 'Kế Toán Minh Châu'}</span>
+              <span className="font-bold text-white text-lg">{settings?.site_name ?? 'Kế Toán Việt Á Châu'}</span>
             </div>
             <p className="text-sm leading-relaxed mb-5 text-gray-400">
               {settings?.site_description ?? 'Đơn vị tư vấn kế toán – thuế – pháp lý doanh nghiệp uy tín, chuyên nghiệp.'}
@@ -144,7 +144,7 @@ export default function Footer() {
       <div className="border-t border-gray-800">
         <div className="max-w-site mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} {settings?.site_name ?? 'Kế Toán Minh Châu'}. Tất cả quyền được bảo lưu.
+            © {new Date().getFullYear()} {settings?.site_name ?? 'Kế Toán Việt Á Châu'}. Tất cả quyền được bảo lưu.
           </p>
           <p className="text-xs text-gray-600">Thiết kế bởi đội ngũ kỹ thuật nội bộ</p>
         </div>
