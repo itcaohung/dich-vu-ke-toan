@@ -107,7 +107,7 @@ export default function HomePage() {
   ]
 
   // setting mặc định là hiển thị (chỉ ẩn khi value === 'false')
-  const show = (key: keyof typeof settings) => (settings as Record<string, string> | undefined)?.[key] !== 'false'
+  const show = (key: string) => (settings as Record<string, string> | undefined)?.[key] !== 'false'
 
   return (
     <div className="bg-white">
