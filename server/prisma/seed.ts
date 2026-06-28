@@ -96,12 +96,7 @@ async function main() {
 
   // ── Offices ──────────────────────────────────────────────
   const offices = [
-    { name: 'TP. Hồ Chí Minh (Trụ Sở)', address: '144 Đinh Tiên Hoàng, P.1, Q. Bình Thạnh, TP.HCM', phone: '(028) 2244 6739', email: 'hcm@ketoanvietachau.vn', order: 1 },
-    { name: 'Hà Nội', address: 'Tầng 7, 57 Trần Quốc Toản, Q. Hoàn Kiếm, Hà Nội', phone: '(024) 6295 5968', email: 'hn@ketoanvietachau.vn', order: 2 },
-    { name: 'Đà Nẵng', address: 'Tầng 5, 82 Hùng Vương, Q. Hải Châu, Đà Nẵng', phone: '(0236) 3030 779', email: 'dn@ketoanvietachau.vn', order: 3 },
-    { name: 'Cần Thơ', address: 'Số 66 Mậu Thân, Q. Ninh Kiều, TP. Cần Thơ', phone: '(0292) 3012 555', email: 'ct@ketoanvietachau.vn', order: 4 },
-    { name: 'Đồng Nai', address: 'Số 12 Nguyễn Ái Quốc, P. Tân Hiệp, Biên Hòa, Đồng Nai', phone: '(0251) 3881 288', email: 'dn2@ketoanvietachau.vn', order: 5 },
-    { name: 'Bình Dương', address: 'Số 8 Đại lộ Bình Dương, P. Phú Hòa, TP. Thủ Dầu Một', phone: '(0274) 2222 568', email: 'bd@ketoanvietachau.vn', order: 6 },
+    { name: 'Kế Toán Việt Á Châu', address: '468/1/26 KP.13, P. Tam Hiệp, TP. Biên Hòa, Đồng Nai', phone: '091 999 6113', email: 'ketoanvietachau88@gmail.com', order: 1 },
   ]
 
   for (const [i, o] of offices.entries()) {
@@ -113,17 +108,16 @@ async function main() {
 
   // ── Settings ─────────────────────────────────────────────
   const settings = [
-    { key: 'site_name', value: 'Kế Toán Việt Á Châu' },
-    { key: 'site_description', value: 'Dịch vụ kế toán trọn gói uy tín từ 2007' },
-    { key: 'hotline', value: '1900 6234' },
-    { key: 'email', value: 'cskh@ketoanvietachau.vn' },
-    { key: 'facebook', value: 'https://facebook.com/ketoanvietachau' },
-    { key: 'youtube', value: '' },
-    { key: 'zalo', value: '1900 6234' },
-    { key: 'address', value: '144 Đinh Tiên Hoàng, P.1, Q. Bình Thạnh, TP.HCM' },
-    { key: 'working_hours', value: 'Thứ 2 – Thứ 7: 08:00 – 17:30' },
-    { key: 'tax_code', value: '0307520384' },
-    { key: 'established_year', value: '2007' },
+    { key: 'site_name',        value: 'Kế Toán Việt Á Châu' },
+    { key: 'site_description', value: 'Dịch vụ kế toán trọn gói uy tín – Kế Toán Việt Á Châu' },
+    { key: 'hotline',          value: '091 999 6113' },
+    { key: 'email',            value: 'ketoanvietachau88@gmail.com' },
+    { key: 'facebook',         value: 'https://facebook.com/ketoanvietachau' },
+    { key: 'youtube',          value: '' },
+    { key: 'zalo',             value: '0919996113' },
+    { key: 'address',          value: '468/1/26 KP.13, P. Tam Hiệp, TP. Biên Hòa, Đồng Nai' },
+    { key: 'website',          value: 'https://ketoanvietachau.com' },
+    { key: 'working_hours',    value: 'Thứ 2 – Thứ 7: 08:00 – 17:30' },
   ]
 
   for (const s of settings) {
@@ -201,6 +195,8 @@ async function main() {
   console.log('─────────────────────────────────')
   console.log('📧 Email: admin@ketoanvietachau.vn')
   console.log('🔑 Password: Admin@123456')
+  console.log('🌐 Website: https://ketoanvietachau.com')
+  console.log('📞 Hotline: 091 999 6113')
   console.log('─────────────────────────────────\n')
 }
 
